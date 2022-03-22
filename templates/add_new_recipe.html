@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Adding new awesome recipe {% endblock %}
+
+{% block content%}
+
+
+
+
+<form action="/add-new-recipe" method="post" enctype="multipart/form-data">
+    <input type="file" name="my-file">
+    <input type="sumbit">
+</form>
+
+{% endblock %}

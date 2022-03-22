@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Eat This! {% endblock %}
+
+{% block content %}
+
+<h2>Create an Account</h2>
+  <form action="/user_registration" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+        username <input type="text" name="username">
+    </p>
+
+    <p>
+        Full Name <input type="text" name="full_name">
+    </p>
+
+
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+{% endblock %}
