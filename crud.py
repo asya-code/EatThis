@@ -56,7 +56,7 @@ def get_recipes_by_meal(given_meal):
     return Recipe.querry.filter(Recipe.diet==given_meal).all()
 
 
-def create_step(instruction, step_image, recipe_id, order):
+def create_step(instruction, recipe_id, order, step_image=None):
     """Create and return a new cooking step for the recipe."""
     step = Step(
         instruction=instruction,
@@ -86,6 +86,22 @@ def create_favorite(recipe_id, user_id):
         recipe_id=recipe_id,
         user_id=user_id)
     return favorite
+
+def get_most_faved():
+    """Get 3 first most often "favorited" recipes"""
+   # all_faved = Favorite.query.group_by(Recipe.recipe_id).having(db.func.count(Favorite.user_id)>2).all()
+    all_faved = db.session.query(db.func.count(Favorite.fav_id), Favorite.recipe_id).group_by(Favorite.recipe_id).all()
+    count = 1
+    most_faved = []
+    for fave in all_faved:
+        if count < 7:
+            fav_recipe = get_recipe_by_id(fave[1])
+            most_faved.append(fav_recipe)
+            count += 1
+        else:
+            break
+    return most_faved
+    
 
 def get_fav_by_id(fav_id):
     """Return a recipe by primary key."""
@@ -132,18 +148,19 @@ def get_ing_by_recipe_id(given_recipe_id):
     return Favorite.query.filter(Favorite.recipe_id==given_recipe_id).all()
 
 
+#def create_image(url, step_id=None,recipe_id=None):
 
-def create_image(url, step_id,recipe_id):
+def create_image(url,recipe_id=None):
     """Create and return a new image object."""
     image = Image(
         url=url,
-        step_id=step_id,
+#        step_id=step_id,
         recipe_id=recipe_id)
     return image
 
 def get_image_by_id(img_id):
     """Return image by primary key."""
-    return Image.query.get(ing_id)
+    return Image.query.get(img_id)
 
 def get_images():
     """Return all images."""
@@ -152,11 +169,11 @@ def get_images():
 def get_imgs_by_recipe_id(given_recipe_id):
     """Return all images for particular recipe."""
     return Image.query.filter(Image.recipe_id==given_recipe_id).all()
-
+'''
 def get_imgs_by_step_id(given_step_id):
     """Return all images for particular step.""" 
     return Image.query.filter(Image.step_id==given_step_id).all()
-
+'''
 
 
 if __name__ == "__main__":

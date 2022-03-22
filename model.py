@@ -90,19 +90,19 @@ class Image(db.Model):
 
     img_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     url = db.Column(db.String)
-#    step_id = db.Column(db.Integer, db.ForeignKey("step.") nullable=True)
+    #step_id = db.Column(db.Integer, db.ForeignKey("step.step_image"), nullable=True)
     recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.recipe_id"), nullable=True)
 
-#    step = db.relashionship("Step", backref="images")
+    #step = db.relationship("Step", backref="images")
     recipe = db.relationship("Recipe", backref="images")
 
     def __repr__(self):
         return f"<Image img_id={self.img_id}, recipe_id={self.recipe_id}>"
 
-def connect_to_db(app, db_name):
+def connect_to_db(app, db_uri="postgresql:///eat_this", echo=True):
     """Connect to database."""
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql:///{db_name}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     app.config["SQLALCHEMY_ECHO"] = True
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -112,4 +112,5 @@ def connect_to_db(app, db_name):
 
 if __name__ == "__main__":
     from server import app
-    connect_to_db(app, "eat_this")
+    
+    connect_to_db(app)
