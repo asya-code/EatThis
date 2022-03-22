@@ -1,15 +1,16 @@
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db, db
+import cloudinary
 import cloudinary.uploader
+import cloudinary.api
 import os
 import crud
 from jinja2 import StrictUndefined
 
-'''
+
 CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
 CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
 CLOUD_NAME = "eat-this"
-'''
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -51,7 +52,7 @@ def process_login():
     else:
         flash("Looks like we don't know you yet! ")
         return redirect("/registration")
-    return redirect("/profile")
+    return redirect("/")
 
 @app.route('/logout')
 def logout_user():
@@ -67,7 +68,6 @@ def logout_user():
 
 @app.route('/profile')
 def profile():
-
     return render_template("profile.html")
 
 @app.route('/registration')
@@ -82,8 +82,6 @@ def register_user():
     password = request.form.get("password")
     username = request.form.get("username")
     full_name = request.form.get("full_name")
-
-
     if crud.get_user_by_email(email):
         flash("This user already exists, please, log in")    
     else:
@@ -91,12 +89,47 @@ def register_user():
         db.session.add(new_user)
         db.session.commit()
         flash(f"Welcome, {username}!")
-
     return redirect('/')
 
 
+@app.route('/new_recipe')
+def display_add_new_recipe():
+    return render_template("add_new_recipe.html")
 
 
+@app.route('/add_new_recipe', methods=["POST"])
+def add_new_recipe():
+    """create an account"""
+    #assign email and password variables with request.form.get
+    title = request.form.get("title")
+    cuisine = request.form.get("cuisine")
+    diet = request.form.get("diet")
+    new_recipe = crud.create_recipe(title=title, cuisine=cuisine, added_by=session['current_user'], 
+    diet=diet)
+    db.session.add(new_recipe)
+    db.session.commit()
+    new_recipe_id = new_recipe.recipe_id
+    #new_recipe_id = crud.get_last_recipe_by_added(session['current_user']).recipe_id
+
+    image = request.files['recipe_img']
+    result = cloudinary.uploader.upload(image, api_key=CLOUDINARY_KEY,
+        api_secret=CLOUDINARY_SECRET,
+        cloud_name=CLOUD_NAME)
+    url = result['secure_url']
+    new_image = crud.create_image(url,recipe_id=new_recipe_id)
+    db.session.add(new_image)
+    db.session.commit()
+    '''
+    here will be the file handling something,
+    then create img for the recipe and steps
+    image = create_image(url,recipe_id=None)
+    '''  
+    return redirect(f'/recipe/{new_recipe_id}')
+    #return render_template("recipe.html")
+
+@app.route('/recipe/<recipe_id>')
+def show_recipe(recipe_id):
+    return render_template("recipe.html", recipe=crud.get_recipe_by_id(recipe_id))
 
 if __name__ == "__main__":
     connect_to_db(app)

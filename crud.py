@@ -40,20 +40,24 @@ def get_recipe_by_id(recipe_id):
 
 def get_recipes_by_added(user_id):
     """Return all recipes added by specific user""" 
-    return Recipe.querry.filter(Recipe.added_by==user_id).all()
+    return Recipe.query.filter(Recipe.added_by==user_id).all()
+######## Fetch freshly added recipe #####
+def get_last_recipe_by_added(user_id):
+    """Return all recipes added by specific user""" 
+    return Recipe.query.filter(Recipe.added_by==user_id).order_by(Recipe.added_by.desc()).first()
 
 def get_recipes_by_cuisine(given_cuisine):
     """Return all recipes assosciated with particular cuisine"""
-    return Recipe.querry.filter(Recipe.cuisine==given_cuisine).all()
+    return Recipe.query.filter(Recipe.cuisine==given_cuisine).all()
 
 def get_recipes_by_diet(given_diet):
     """Return all recipes assosciated with particular diet"""
-    return Recipe.querry.filter(Recipe.diet==given_diet).all()
+    return Recipe.query.filter(Recipe.diet==given_diet).all()
 
 def get_recipes_by_meal(given_meal):
     """Return all recipes assosciated with 
         particular meal time (breakfast, lunch, dinner)"""
-    return Recipe.querry.filter(Recipe.diet==given_meal).all()
+    return Recipe.query.filter(Recipe.diet==given_meal).all()
 
 
 def create_step(instruction, recipe_id, order, step_image=None):

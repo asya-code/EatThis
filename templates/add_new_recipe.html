@@ -3,12 +3,17 @@
 
 {% block content%}
 
+<form action="/add_new_recipe" method="post" enctype="multipart/form-data">
+    <p>
+        Recipe name <input type="text" name="title">
+    </p>
+    <p>
+        cuisine <input type="text" name="cuisine">
+        diet <input type="text" name="diet">
+    </p>
 
-
-
-<form action="/add-new-recipe" method="post" enctype="multipart/form-data">
-    <input type="file" name="my-file">
-    <input type="sumbit">
+    <input type="file" name="recipe_img">
+    <button type="submit"> Add new recipe </button>
 </form>
 
 {% endblock %}
