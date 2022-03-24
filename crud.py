@@ -60,7 +60,7 @@ def get_recipes_by_meal(given_meal):
     return Recipe.query.filter(Recipe.diet==given_meal).all()
 
 
-def create_step(instruction, recipe_id, order, step_image=None):
+def create_step(instruction, recipe_id, order=0, step_image=None):
     """Create and return a new cooking step for the recipe."""
     step = Step(
         instruction=instruction,

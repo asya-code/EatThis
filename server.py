@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db, db
 import cloudinary
 import cloudinary.uploader
@@ -94,7 +94,10 @@ def register_user():
 
 @app.route('/new_recipe')
 def display_add_new_recipe():
-    return render_template("add_new_recipe.html")
+    new_recipe= crud.create_recipe(title="new_recipe")
+    db.session.add(new_recipe)
+    db.session.commit()
+    return render_template("add_new_recipe.html", recipe_id=new_recipe.recipe_id)
 
 
 @app.route('/add_new_recipe', methods=["POST"])
@@ -119,17 +122,26 @@ def add_new_recipe():
     new_image = crud.create_image(url,recipe_id=new_recipe_id)
     db.session.add(new_image)
     db.session.commit()
-    '''
-    here will be the file handling something,
-    then create img for the recipe and steps
-    image = create_image(url,recipe_id=None)
-    '''  
+    
     return redirect(f'/recipe/{new_recipe_id}')
-    #return render_template("recipe.html")
 
 @app.route('/recipe/<recipe_id>')
 def show_recipe(recipe_id):
     return render_template("recipe.html", recipe=crud.get_recipe_by_id(recipe_id))
+
+@app.route('/add_instr', methods=["POST"])
+def add_step():
+    instr_text = request.json.get('addInstr')
+    order = request.json.get('order')
+    recipe_id = request.json.get('recipe_id')
+    new_instr = crud.create_step(order=order, 
+        instruction=instr_text, recipe_id=recipe_id)
+    db.session.add(new_instr)
+    db.session.commit()
+    
+    return new_instr.step_id
+
+
 
 if __name__ == "__main__":
     connect_to_db(app)
