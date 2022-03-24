@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import connect_to_db, db
+from model import connect_to_db, db, User, Recipe, Step, Favorite, Ingredient, Image
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -94,7 +94,7 @@ def register_user():
 
 @app.route('/new_recipe')
 def display_add_new_recipe():
-    new_recipe= crud.create_recipe(title="new_recipe")
+    new_recipe= crud.create_recipe(title="new_recipe", added_by=session['current_user'])
     db.session.add(new_recipe)
     db.session.commit()
     return render_template("add_new_recipe.html", recipe_id=new_recipe.recipe_id)
@@ -102,28 +102,28 @@ def display_add_new_recipe():
 
 @app.route('/add_new_recipe', methods=["POST"])
 def add_new_recipe():
-    """create an account"""
-    #assign email and password variables with request.form.get
-    title = request.form.get("title")
-    cuisine = request.form.get("cuisine")
-    diet = request.form.get("diet")
-    new_recipe = crud.create_recipe(title=title, cuisine=cuisine, added_by=session['current_user'], 
-    diet=diet)
-    db.session.add(new_recipe)
-    db.session.commit()
-    new_recipe_id = new_recipe.recipe_id
-    #new_recipe_id = crud.get_last_recipe_by_added(session['current_user']).recipe_id
-
-    image = request.files['recipe_img']
-    result = cloudinary.uploader.upload(image, api_key=CLOUDINARY_KEY,
-        api_secret=CLOUDINARY_SECRET,
-        cloud_name=CLOUD_NAME)
-    url = result['secure_url']
-    new_image = crud.create_image(url,recipe_id=new_recipe_id)
-    db.session.add(new_image)
+    """new recipe is generated when the page loads,
+    this recipe's id will be fetched from the page,
+    recipe's attributes will be updated with user's input from current page"""
+    updated_recipe_id = request.form.get('recipe_id')
+    new_title = request.form.get("title")
+    new_cuisine = request.form.get("cuisine")
+    new_diet = request.form.get("diet")
+    updated_recipe = crud.get_recipe_by_id(updated_recipe_id)
+    updated_recipe.title = new_title
+    updated_recipe.cuisine = new_cuisine
+    updated_recipe.diet = new_diet
+    if request.files['recipe_img']:
+        image = request.files['recipe_img']
+        result = cloudinary.uploader.upload(image, api_key=CLOUDINARY_KEY,
+            api_secret=CLOUDINARY_SECRET,
+            cloud_name=CLOUD_NAME)
+        url = result['secure_url']
+        new_image = crud.create_image(url,recipe_id=updated_recipe_id)
+        db.session.add(new_image)
     db.session.commit()
     
-    return redirect(f'/recipe/{new_recipe_id}')
+    return redirect(f'/recipe/{updated_recipe_id}')
 
 @app.route('/recipe/<recipe_id>')
 def show_recipe(recipe_id):
@@ -131,15 +131,15 @@ def show_recipe(recipe_id):
 
 @app.route('/add_instr', methods=["POST"])
 def add_step():
-    instr_text = request.json.get('addInstr')
-    order = request.json.get('order')
-    recipe_id = request.json.get('recipe_id')
+    instr_text = request.json.get('instructionText')
+    order = int(request.json.get('order'))
+    recipe_id = int(request.json.get('recipe_id'))
     new_instr = crud.create_step(order=order, 
         instruction=instr_text, recipe_id=recipe_id)
     db.session.add(new_instr)
     db.session.commit()
     
-    return new_instr.step_id
+    return new_instr.instruction
 
 
 

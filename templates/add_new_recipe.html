@@ -3,6 +3,7 @@
 {% block content%}
 
 <form id={{recipe_id}} action="/add_new_recipe" method="post" enctype="multipart/form-data">
+    <input type="hidden" id='hidden_input' name='recipe_id' value={{recipe_id}}>
     <p>
         Recipe name <input type="text" name="title">
     </p>
@@ -20,12 +21,11 @@
     <ul id='steps'>
         <li>
             Instructions <input class="newInstr" id="newInstr0" type="text" name="step" size=300>
-            <button class="addInstr"> add </button>
+            <button class="addInstr" id="instrBttn0"> add </button>
         </li>
     </ul>
     <p>
     <button class="addStep"> Do you want to add another step? </button>
-    <button id="instrDone"> No, I'm done with instructions </button>
 
     </p>
 
@@ -35,7 +35,7 @@
     </p>
     
     <p>
-    <button type="submit"> Add new recipe </button>
+    <button id="addRecipe" type="submit"> Add new recipe </button>
     </p>
 </form>
 <script src='/static/js/add_recipe.js'></script>
