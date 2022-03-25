@@ -35,31 +35,3 @@ button2.addEventListener('click', (evt) => {
 
     instructionField();
     });
-
-// const button_submit=document.querySelector('#addRecipe');
-// button_submit.addEventListener('click', () => {
-//     const formInputs={
-//     recipe_id: document.querySelector('form').id,
-//     title: document.querySelector(`#newInstr${evt.target.id}`).value,
-//     order: document.querySelector(`#newInstr${evt.target.id}`).value,
-//         };
-//         fetch('/add_new_recipe',{
-//             method: 'POST',
-//             body: JSON.stringify(formInputs),
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//         })
-//         .then(response => response.json())
-//         .then (responseData => {
-//             document.querySelector('.newInstr').innerText = responseData;
-//         });
-//     });
-
-
-
-// const button3=document.querySelector('#instrDone');
-// button2.addEventListener('click', () => {
-    
-// })
-

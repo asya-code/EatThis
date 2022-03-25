@@ -26,7 +26,7 @@ def homepage():
 def all_recipes():
     """View all recipes."""
     recipes = crud.get_recipes()
-    return render_template("all_recipes.html", recipes=recipes)
+    return render_template("recipes.html", recipes=recipes)
 
 @app.route("/login_page")
 def display_login_page():
@@ -141,6 +141,12 @@ def add_step():
     
     return new_instr.instruction
 
+@app.route('/search')
+def search():
+    given_cuisine = request.args.get('cuisine')
+    results = crud.get_recipes_by_cuisine(given_cuisine)
+    print(results, "\n")
+    return render_template("recipes.html", recipes=results)
 
 
 if __name__ == "__main__":
