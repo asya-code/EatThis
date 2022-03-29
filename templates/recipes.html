@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Eah This! Recipes: {% endblock %}
+
+{% block content %}
+{% for recipe in recipes %}
+  <div class="card text-white bg-info mb-3">
+    <div style="height:300px; overflow:hidden;">
+      {% for image in recipe.images %}
+      {{image}}
+    <img class="card-img-top" src="{{image.url}}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);">
+  {% endfor %}  
+  </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ recipe.title }}</h5>
+      <a href="/recipes/{{ recipe.recipe_id }}" class="btn btn-primary">View Recipe</a>
+    </div>
+  </div>
+  
+
+{% endfor %}
+
+{% endblock %}
