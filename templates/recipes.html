@@ -6,8 +6,9 @@
   <div class="card text-white bg-info mb-3">
     <div style="height:300px; overflow:hidden;">
       {% for image in recipe.images %}
-      {{image}}
-    <img class="card-img-top" src="{{image.url}}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);">
+      <img class="card-img-top" src="{{image.url}}" 
+      alt="{{ recipe.title }}" style="vertical-align:middle; 
+        transform:translateY(-50%);">
   {% endfor %}  
   </div>
 

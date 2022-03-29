@@ -16,6 +16,13 @@
     </div>
     <p>
     </p>
+    {% if session['current_user'] %}
+    <div>
+        <button class="add_favorite"> Let's save it! </button>
+    </div>
+    {% endif %}
+    <p>
+    </p>
     <div>
         Ingredients:
         <p>
@@ -31,6 +38,11 @@
         <p>
         </p>
         {% for step in recipe.steps%}
+            {% if step.step_image %}
+            <div>
+                {{ step.step_image }}
+            </div>
+            {% endif %}
             <div>
                 {{ step.instruction }}
             </div>
