@@ -28,6 +28,14 @@ def all_recipes():
     recipes = crud.get_recipes()
     return render_template("recipes.html", recipes=recipes)
 
+@app.route("/user_recipes")
+def user_recipes():
+    """View user's recipes."""
+    user_id = session['current_user']
+    recipes = crud.get_recipes_by_added(user_id)
+    username = crud.get_user_by_id(user_id).username
+    return render_template("user_recipes.html", recipes=recipes, username=username)
+
 @app.route("/login_page")
 def display_login_page():
     return render_template("login.html")
@@ -148,6 +156,12 @@ def search():
     print(results, "\n")
     return render_template("recipes.html", recipes=results)
 
+@app.route('/add_fav')
+def add_fav(recipe_id, user_id):
+    new_fav = crud.create_favorite(recipe_id, user_id)
+    db.session.add(new_fav)
+    db.session.commit()
+    return redirect('/recipes/<recipe_id>')
 
 if __name__ == "__main__":
     connect_to_db(app)
