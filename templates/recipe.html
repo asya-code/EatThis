@@ -1,7 +1,44 @@
 {% extends 'base.html' %}
-{% block title %}Adding new awesome recipe {% endblock %}
+{% block title %} {{recipe.title}} {% endblock %}
 
 {% block content%}
+<div class="card text-white bg-info mb-3">
+    <div style="height:300px; overflow:hidden;">
+    {% for image in recipe.images %}
+        <img class="card-img-top" src="{{image.url}}" 
+        alt="{{ recipe.title }}" style="vertical-align:middle; 
+            transform:translateY(-50%);">
+        {% endfor %}
+    </div>
 
+    <div class="card-body">
+      <h5 class="card-title">{{ recipe.title }}</h5>
+    </div>
+    <p>
+    </p>
+    <div>
+        Ingredients:
+        <p>
+        </p>
+        {% for ingredient in recipe.ingredients %}
+            <div>
+                {{ingredient.ing_name}} - {{ingredient.qty}} {{ingredient.unit}}
+            </div>
+        {% endfor %}
+        </div>
+    <div>
+        Instructions:
+        <p>
+        </p>
+        {% for step in recipe.steps%}
+            <div>
+                {{ step.instruction }}
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+  </div>
 
 {% endblock %}

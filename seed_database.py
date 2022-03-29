@@ -49,10 +49,11 @@ model.db.session.commit()
 recipes = crud.get_recipes()
 recipes_id = []
 num = 1
+img_list = ["https://res.cloudinary.com/eat-this/image/upload/v1648574705/Vanilla-cinnamon-breakfast-rice-bowls-c9757f6_l8iuk3.webp", "https://res.cloudinary.com/eat-this/image/upload/v1648574705/slow-roasted-butter-eggplant-curry-152139-2_qogtdm.jpg", "https://res.cloudinary.com/eat-this/image/upload/v1648574705/spanakopita-765dfd2_qnowgw.webp", "https://res.cloudinary.com/eat-this/image/upload/v1648574705/wild-garlic-nettle-soup-23d5de8_p77jsi.webp", "https://res.cloudinary.com/eat-this/image/upload/v1648574705/Vegan-tomato-spinach-quiche-93aba36_cr7rta.webp", "https://res.cloudinary.com/eat-this/image/upload/v1648574705/easy-butter-chicken-7d9efe3_rmbbcu.webp", "https://res.cloudinary.com/eat-this/image/upload/v1648574705/meatball-black-bean-chilli-7cb50d5_s9dsqk.webp"]
 for cur_recipe in recipes:
     recipes_id.append(cur_recipe.recipe_id)
     # Assotiate images to recipes:
-    new_image = crud.create_image(url=f"seedimg/{num}.jpeg",recipe_id=cur_recipe.recipe_id)
+    new_image = crud.create_image(url=f"{choice(img_list)}",recipe_id=cur_recipe.recipe_id)
     model.db.session.add(new_image)
     num += 1
     for n in range(randint(3, 6)):

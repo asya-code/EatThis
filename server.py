@@ -125,7 +125,7 @@ def add_new_recipe():
     
     return redirect(f'/recipe/{updated_recipe_id}')
 
-@app.route('/recipe/<recipe_id>')
+@app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
     return render_template("recipe.html", recipe=crud.get_recipe_by_id(recipe_id))
 
