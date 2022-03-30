@@ -21,6 +21,9 @@ def homepage():
     """View homepage."""
     return render_template("homepage.html", recipes=crud.get_most_faved())
 
+@app.route('/about')
+def show_about():
+    return render_template("about.html")
 
 @app.route("/all_recipes")
 def all_recipes():
@@ -156,16 +159,26 @@ def search():
     print(results, "\n")
     return render_template("recipes.html", recipes=results)
 
-@app.route('/add_fav')
+@app.route('/add_fav', methods=["POST"])
 def add_fav():
     user_id = session['current_user']
-    recipe_id = request.args.get('recipe_id')        
-    title = request.args.get('title')
+
+    #import pdb; pdb.set_trace()
+    recipe_id = request.json.get('favRecipeId')        
+    title = request.json.get('favRecipeTitle')
     new_fav = crud.create_favorite(recipe_id, user_id)
     db.session.add(new_fav)
     db.session.commit()
-    flash(f'{title} is saved into your Favorite recipes!')
-    return new_fav
+    return f'{title} is saved into your Favorite recipes!'
+
+@app.route('/user_favorite')
+def show_favorite():
+    favorites = crud.get_favs_by_user_id(session['current_user'])
+    favorite_recipes = []
+    for fav in favorites:
+
+        favorite_recipes.append(crud.get_recipe_by_id(fav.recipe_id))
+    return render_template("user_favorite.html", favorite_recipes=favorite_recipes)
 
 if __name__ == "__main__":
     connect_to_db(app)

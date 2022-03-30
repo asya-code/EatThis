@@ -32,12 +32,12 @@
     </p>
   {% endfor %}
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
       
-    <a class="navbar-brand" href="#"> <img src="/static/images/logo.svg" alt="Eat This!" width=150px></a>
+    <a class="navbar-brand" href="#"> <img src="/static/images/logo.png" alt="Eat This!" width=150px></a>
     <!-- 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span>
+          <a class="nav-link" href="/"> Home <span class="sr-only"></span>
           </a>
         </li>
         
@@ -66,11 +66,12 @@
             Let's start!
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/profile/{{ session['current_user'] }}">My Profile</a></li>
-            <li><a class="dropdown-item" href="/user_recipes">My recipes</a></li>
-            <li><a class="drropdown-item" href="/new_recipe"> Add new recipe</a></li>
+            <li><a class="dropdown-item" href="/profile/{{ session['current_user'] }}"> My Profile</a></li>
+            <li><a class="dropdown-item" href="/user_recipes"> My own recipes </a></li>
+            <li><a class="dropdown-item" href="/user_favorite"> My favorites </a></li>
+            <li><a class="dropdown-item" href="/new_recipe"> Add new recipe </a></li>
 
-            <li><a class="drropdown-item" href="/meal_plan">Meal Plan</a></li>
+            <li><a class="dropdown-item" href="/meal_plan"> Meal Plan</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/logout">Log Out</a></li>
           </ul>
