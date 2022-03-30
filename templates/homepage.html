@@ -7,9 +7,11 @@
 
 {% for recipe in recipes %}
   <div class="card text-white bg-info mb-3">
+    {% if recipe.images %}
     <div style="height:300px; overflow:hidden;">
-      <img class="card-img-top" src="{{ recipe.images[0] }}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);">
+      <img class="card-img-top" src="{{ recipe.images[0] }}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);"> 
     </div>
+    {% endif %}
 
     <div class="card-body">
       <h5 class="card-title">{{ recipe.title }}</h5>

@@ -134,7 +134,7 @@ def add_new_recipe():
         db.session.add(new_image)
     db.session.commit()
     
-    return redirect(f'/recipe/{updated_recipe_id}')
+    return redirect(f'/recipes/{updated_recipe_id}')
 
 @app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
@@ -142,7 +142,8 @@ def show_recipe(recipe_id):
     fav_list = crud.get_favs_by_user_id(session['current_user'])
     fav_ids = []
     for fav in fav_list:
-        fav_ids.append(fav.fav_id)
+        fav_ids.append(fav.recipe_id)
+    print(fav_ids)
     return render_template("recipe.html", recipe=recipe, favorites=fav_ids)
 
 @app.route('/add_instr', methods=["POST"])
@@ -156,6 +157,19 @@ def add_step():
     db.session.commit()
     
     return new_instr.instruction
+
+@app.route('/add_ingredient', methods=["POST"])
+def add_ingredient():
+    ing_name = request.json.get('ingredientText')
+    recipe_id = int(request.json.get('recipe_id'))
+    #
+    #hardcoded qty and unit
+    #
+    new_ing = crud.create_ingredient(ing_name=ing_name, recipe_id= recipe_id, qty=1, unit="cup")
+    db.session.add(new_ing)
+    db.session.commit()
+    
+    return new_ing.ing_id
 
 @app.route('/search')
 def search():
