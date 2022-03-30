@@ -157,11 +157,15 @@ def search():
     return render_template("recipes.html", recipes=results)
 
 @app.route('/add_fav')
-def add_fav(recipe_id, user_id):
+def add_fav():
+    user_id = session['current_user']
+    recipe_id = request.args.get('recipe_id')        
+    title = request.args.get('title')
     new_fav = crud.create_favorite(recipe_id, user_id)
     db.session.add(new_fav)
     db.session.commit()
-    return redirect('/recipes/<recipe_id>')
+    flash(f'{title} is saved into your Favorite recipes!')
+    return new_fav
 
 if __name__ == "__main__":
     connect_to_db(app)

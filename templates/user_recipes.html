@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Eah This! Recipes: {% endblock %}
+
+{% block content %}
+<div>
+    Recipes added by {{ username }}:
+</div>
+{% for recipe in recipes %}
+  <div class="card text-white bg-info mb-3">
+    <div style="height:300px; overflow:hidden;">
+      <img class="card-img-top" src="{{ recipe.images[0] }}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);">
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ recipe.title }}</h5>
+      <a href="/recipes/{{ recipe.recipe_id }}" class="btn btn-primary">View Recipe</a>
+    </div>
+  </div>
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

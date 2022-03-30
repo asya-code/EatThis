@@ -18,7 +18,7 @@
     </p>
     {% if session['current_user'] %}
     <div>
-        <button id="#add_fav"> Let's save it! </button>
+        <button id="add_fav"> Let's save it! </button>
     </div>
     {% endif %}
     <p>
@@ -49,8 +49,8 @@
         {% endfor %}
 
     </div>
-
-
   </div>
+  <input type="hidden" id='hidden_input' name='recipe_id' value={{recipe.recipe_id}}>
+  <input type="hidden" id='hidden_input' name='title' value={{recipe.title}}>
   <script src='/static/js/recipe.js'></script>
 {% endblock %}
