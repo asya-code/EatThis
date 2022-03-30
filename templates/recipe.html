@@ -16,10 +16,12 @@
     </div>
     <p>
     </p>
-    {% if session['current_user'] %}
+    {% if session['current_user'] and recipe.recipe_id not in favorites%}
     <div>
         <button id="add_fav"> Let's save it! </button>
     </div>
+    {% else %}
+    {{recipe.title}} is in yous Favorites!
     {% endif %}
     <p>
     </p>

@@ -138,7 +138,12 @@ def add_new_recipe():
 
 @app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
-    return render_template("recipe.html", recipe=crud.get_recipe_by_id(recipe_id))
+    recipe = crud.get_recipe_by_id(recipe_id)
+    fav_list = crud.get_favs_by_user_id(session['current_user'])
+    fav_ids = []
+    for fav in fav_list:
+        fav_ids.append(fav.fav_id)
+    return render_template("recipe.html", recipe=recipe, favorites=fav_ids)
 
 @app.route('/add_instr', methods=["POST"])
 def add_step():
