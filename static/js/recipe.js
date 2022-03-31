@@ -15,5 +15,7 @@ favBttn.addEventListener('click', (evt) => {
     .then (response => response.text())
     .then (responseText => {
         alert(responseText);
-    })
+    });
+    document.querySelector('#add_fav').disabled = true;
+
 });
