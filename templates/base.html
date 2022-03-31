@@ -55,10 +55,14 @@
         </li>
         
         <form class="d-flex" action="/search">
-          <input class="form-control me-2" id="searchField" name="cuisine" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" id="searchField" name="cuisine" type="search" placeholder="Search" aria-label="search">
           <button class="btn btn-outline-success" id="searchBttn" type="submit">Search</button>
         </form>
-
+        
+        <form class="d-flex" action="/ingredient_search">
+          <input class="form-control me-2" id="ingredientSearchField" name="ingredient" type="search" placeholder="Search by ingredient" aria-label="ingredientSearch">
+          <button class="btn btn-outline-success" id="ingredientSearchBttn" type="submit"> Search by ingredient </button>
+        </form>
       
         {% if session['current_user'] %}
         <li class="nav-item dropdown">

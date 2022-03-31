@@ -60,6 +60,22 @@ def get_recipes_by_meal(given_meal):
     return Recipe.query.filter(Recipe.diet==given_meal).all()
 
 
+
+
+
+
+
+def get_recipes_by_ingredient(ing_name):
+    """Return ingredient by primary key."""
+    #return Ingredient.query.get(ing_name)
+    return Recipe.query.filter(Ingredient.ing_name==ing_name).all()
+
+
+
+
+
+
+
 def create_step(instruction, recipe_id, order=0, step_image=None):
     """Create and return a new cooking step for the recipe."""
     step = Step(

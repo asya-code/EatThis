@@ -172,15 +172,21 @@ def add_ingredient():
 
 @app.route('/search')
 def search():
-    given_cuisine = request.args.get('cuisine')
+    given_cuisine = request.args.get('cuisine').lower()
+    #print("\n", type(given_cuisine), "\n")
     results = crud.get_recipes_by_cuisine(given_cuisine)
-    print(results, "\n")
+    return render_template("recipes.html", recipes=results)
+
+@app.route('/ingredient_search')
+def ingredient_search():
+    ing_name = request.args.get('ingredient')
+    print("\n", type(ing_name), "\n")
+    results = crud.get_recipes_by_ingredient(ing_name)
     return render_template("recipes.html", recipes=results)
 
 @app.route('/add_fav', methods=["POST"])
 def add_fav():
     user_id = session['current_user']
-
     #import pdb; pdb.set_trace()
     recipe_id = request.json.get('favRecipeId')        
     title = request.json.get('favRecipeTitle')

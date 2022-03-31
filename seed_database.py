@@ -21,7 +21,7 @@ steps = ["boil water", "add salt", "enjoy!"]
 titles = ["Food Enchiladas", "Beer Kielbasa", "Coconut Shrimp",
     "Crab Remoulade", "Favorite soup", "Frito nose", 
     "General' Tso", "Greek Gyros"]
-cuisines = ["Indonesian", "Turkish", "Thai", "Moroccan", "Japanese"]
+cuisines = ["indonesian", "turkish", "thai", "moroccan", "japanese"]
 
 # Create 10 users;
 for n in range(10):
