@@ -3,7 +3,7 @@ from datetime import datetime, date
 
 def create_user(email, password, username, full_name=None, created_at=date.today()):
     """Create and return a new user."""
-    user = User(email=email, password=password, username=username)
+    user = User(email=email, password=password, username=username, full_name=full_name, created_at=created_at)
     return user
 
 def get_users():
