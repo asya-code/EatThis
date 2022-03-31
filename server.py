@@ -162,10 +162,9 @@ def add_step():
 def add_ingredient():
     ing_name = request.json.get('ingredientText')
     recipe_id = int(request.json.get('recipe_id'))
-    #
-    #hardcoded qty and unit
-    #
-    new_ing = crud.create_ingredient(ing_name=ing_name, recipe_id= recipe_id, qty=1, unit="cup")
+    qty = int(request.json.get('qty'))
+    unit = request.json.get('unit')
+    new_ing = crud.create_ingredient(ing_name=ing_name, recipe_id= recipe_id, qty=qty, unit=unit)
     db.session.add(new_ing)
     db.session.commit()
     

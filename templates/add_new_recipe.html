@@ -15,6 +15,15 @@
     <ul id='ingredients'>
         <li>
         Ingredient <input class="newIngr" id="newIngr0" type="text" name="ingredient">
+        Amount <input class="newQty" id="newQty0" type="number" name="qty">
+        <label for="unit"> units </label>
+        <select name="unit" id="newUnit0">
+            <option value="gram"> gram </option>
+            <option value="oz"> oz </option>
+            <option value="ml"> ml </option>
+            <option value="fl oz"> fl oz </option>
+            <option value="cup"> cup </option>
+        </select>
         <button class="addIngr" id="ingrBttn0"> add </button>
         </li>
     </ul>
@@ -24,11 +33,12 @@
 
 
 
-
+    <p>
+    </p>
     <ul id='steps'>
         <li>
             Instructions <input class="newInstr" id="newInstr0" type="text" name="step" size=300>
-            <button class="addInstr" id="instrBttn0"> add </button>
+            <button class="addInstr input-lg" id="instrBttn0"> add </button>
         </li>
     </ul>
 

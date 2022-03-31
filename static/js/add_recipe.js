@@ -1,5 +1,7 @@
 let stepIndex=0
 let ingIndex=0
+let qtyIndex=0
+let unitIndex=0
 
 const recipe_id=document.querySelector('form').id
 
@@ -10,6 +12,8 @@ function ingredientField() {
         const ingInputs={
             recipe_id: document.querySelector('#hidden_input').value,
             ingredientText: document.querySelector(`#newIngr${ingIndex}`).value,
+            qty: document.querySelector(`#newQty${qtyIndex}`).value,
+            unit: document.querySelector(`#newUnit${unitIndex}`).value,
         };
         fetch('/add_ingredient',{
             method: 'POST',
@@ -32,7 +36,15 @@ nextIngrBttn.addEventListener('click', (evt) => {
     ingIndex+=1;
     document.querySelector('#ingredients').insertAdjacentHTML('beforeend', 
         ` <li> Ingredient <input id="newIngr${ingIndex}"`+
-        `type="text" name="ingredient" size=300><button id="ingrBttn${ingIndex}" type="submit"> add </button></li>`);
+        `type="text" name="ingredient" size=300><input class="newQty" id="newQty${qtyIndex}" type="number" name="qty">
+        <label for="unit"> units </label>
+        <select name="unit" id="newUnit${unitIndex}">
+            <option value="gram"> gram </option>
+            <option value="oz"> oz </option>
+            <option value="ml"> ml </option>
+            <option value="fl oz"> fl oz </option>
+            <option value="cup"> cup </option>
+        </select><button id="ingrBttn${ingIndex}" type="submit"> add </button></li>`);
 
     ingredientField();
     });
