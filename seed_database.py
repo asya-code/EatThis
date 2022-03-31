@@ -22,6 +22,8 @@ titles = ["Food Enchiladas", "Beer Kielbasa", "Coconut Shrimp",
     "Crab Remoulade", "Favorite soup", "Frito nose", 
     "General' Tso", "Greek Gyros"]
 cuisines = ["indonesian", "turkish", "thai", "moroccan", "japanese"]
+diets = ["vegetarian", "carnivor", "keto", "bla"]
+meals = ["breakfast", "lunch", "dinner", "supper", "appetizer", "supper", "party", "snack"]
 
 # Create 10 users;
 for n in range(10):
@@ -41,7 +43,7 @@ for user in users:
 # Create 10 recipes:
 for n in range(10):
     new_recipe = crud.create_recipe(title=choice(titles), 
-        cuisine=choice(cuisines), added_by=choice(users_id), )
+        cuisine=choice(cuisines), added_by=choice(users_id), diet=choice(diets), meal=choice(meals))
     model.db.session.add(new_recipe)
 model.db.session.commit()    
 

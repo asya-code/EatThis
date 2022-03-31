@@ -20,10 +20,11 @@ def get_user_by_email(email):
 
 
 
-def create_recipe(title, cuisine=None, added_by=None, diet=None, created_at=date.today()):
+def create_recipe(title, meal=None, cuisine=None, added_by=None, diet=None, created_at=date.today()):
     """Create and return a new recipe."""
     recipe = Recipe(
         title=title,
+        meal=meal,
         cuisine=cuisine,
         created_at=created_at,
         added_by=added_by,
@@ -57,23 +58,15 @@ def get_recipes_by_diet(given_diet):
 def get_recipes_by_meal(given_meal):
     """Return all recipes assosciated with 
         particular meal time (breakfast, lunch, dinner)"""
-    return Recipe.query.filter(Recipe.diet==given_meal).all()
+    return Recipe.query.filter(Recipe.meal==given_meal).all()
 
-
-
-
-
-
+def get_recipes_by_title(given_title):
+    """Return all recipes assosciated with particular diet"""
+    return Recipe.query.filter(Recipe.title==given_title).all()
 
 def get_recipes_by_ingredient(ing_name):
     """Return ingredient by primary key."""
-    #return Ingredient.query.get(ing_name)
     return Recipe.query.filter(Ingredient.ing_name==ing_name).all()
-
-
-
-
-
 
 
 def create_step(instruction, recipe_id, order=0, step_image=None):
@@ -84,7 +77,6 @@ def create_step(instruction, recipe_id, order=0, step_image=None):
         recipe_id=recipe_id,
         order=order)
     return step
-
 
 def get_steps():
     """Return all steps ."""

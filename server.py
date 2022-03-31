@@ -172,15 +172,26 @@ def add_ingredient():
 
 @app.route('/search')
 def search():
-    given_cuisine = request.args.get('cuisine').lower()
+    search_word = request.args.get('cuisine').lower()
     #print("\n", type(given_cuisine), "\n")
-    results = crud.get_recipes_by_cuisine(given_cuisine)
+    results = []
+    by_cuisine = crud.get_recipes_by_cuisine(search_word)
+    for recipe in by_cuisine:
+        results.append(recipe)
+    by_title = crud.get_recipes_by_title(search_word)
+    for recipe in by_title:
+        results.append(recipe)
+    by_diet = crud.get_recipes_by_diet(search_word)
+    for recipe in by_diet:
+        results.append(recipe)
+    by_meal = crud.get_recipes_by_meal(search_word)
+    for recipe in by_meal:
+        results.append(recipe)
     return render_template("recipes.html", recipes=results)
 
 @app.route('/ingredient_search')
 def ingredient_search():
     ing_name = request.args.get('ingredient')
-    print("\n", type(ing_name), "\n")
     results = crud.get_recipes_by_ingredient(ing_name)
     return render_template("recipes.html", recipes=results)
 
