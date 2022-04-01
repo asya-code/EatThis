@@ -29,7 +29,7 @@ def show_about():
 def all_recipes():
     """View all recipes."""
     recipes = crud.get_recipes()
-    message = f"Check out our recipes!"
+    message = "Check out our recipes!"
     return render_template("recipes.html", recipes=recipes, message=message)
 
 @app.route("/user_recipes")
