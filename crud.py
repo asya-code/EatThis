@@ -35,6 +35,10 @@ def get_recipes():
     """Return all recipes."""
     return Recipe.query.all()
 
+def get_public_recipes():
+    """Return all recipes."""
+    return Recipe.query.filter(Recipe.private==False)
+
 def get_recipe_by_id(recipe_id):
     """Return a recipe by primary key."""
     return Recipe.query.get(recipe_id)

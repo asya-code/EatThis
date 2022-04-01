@@ -28,8 +28,11 @@ def show_about():
 @app.route("/all_recipes")
 def all_recipes():
     """View all recipes."""
-    recipes = crud.get_recipes()
-    message = "Check out our recipes!"
+    if session['current_user']:
+        recipes = crud.get_recipes()
+    else:
+        recipes = crud.get_public_recipes()
+        message = "Check out our recipes!"
     return render_template("recipes.html", recipes=recipes, message=message)
 
 @app.route("/user_recipes")

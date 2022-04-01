@@ -31,6 +31,7 @@ class Recipe(db.Model):
     added_by = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     diet = db.Column(db.String)
     meal = db.Column(db.String) # meal type (breakf, lunch etc)
+    private = db.Column(db.Boolean, default=False)
     #recipe.steps
     #recipe.favorites
     #recipes.ingredients
