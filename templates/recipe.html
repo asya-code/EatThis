@@ -16,17 +16,24 @@
     </div>
     <p>
     </p>
-    {% if session['current_user'] and recipe.recipe_id not in favorites %}
-    <div>
-        <button id="add_fav"> Let's save it! </button>
-    </div>
-    {% else %}
-    "{{recipe.title}}" is in yous Favorites! 
-    Do you want to edit it?
-    <a id="edit_recipe" href="/edit_{{recipe.recipe_id}}"> Let's edit </a>
+    {% if session['current_user'] %} 
+
+        {% if recipe.added_by==session['current_user'] %}
+            "{{recipe.title}}" is your own recipe. Do you want to edit it?
+            <a id="edit_recipe" href="/edit_{{recipe.recipe_id}}"> Let's edit </a>     
+        {% endif %}
+        
+        {% if recipe.recipe_id in favorites %}
+            "{{recipe.title}}" is in yous Favorites! Do you want to edit it?
+            <a id="edit_recipe" href="/edit_{{recipe.recipe_id}}"> Let's edit </a>
+
+        {% else %}
+            <div>
+                <button id="add_fav"> I like it! </button>
+            </div>
+        {% endif %}
 
     {% endif %}
-
     <p>
     </p>
     <div>

@@ -6,10 +6,12 @@
     Recipes added by {{ username }}:
 </div>
 {% for recipe in recipes %}
+  {% if recipe.images %}
   <div class="card text-white bg-info mb-3">
     <div style="height:300px; overflow:hidden;">
       <img class="card-img-top" src="{{ recipe.images[0].url }}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);">
     </div>
+  {% endif %}
 
     <div class="card-body">
       <h5 class="card-title">{{ recipe.title }}</h5>
