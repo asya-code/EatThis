@@ -4,8 +4,10 @@
 
 <form id={{recipe_id}} action="/add_new_recipe" method="post" enctype="multipart/form-data">
     <input type="hidden" id='hidden_input' name='recipe_id' value={{recipe_id}}>
+    <p>All fields marked with * are required</p>
+
     <p>
-        Recipe name <input type="text" name="title">
+        Recipe name * <input type="text" name="title" required>
     </p>
     <p>
         cuisine <input type="text" name="cuisine">
@@ -14,10 +16,10 @@
 
     <ul id='ingredients'>
         <li>
-        Ingredient <input class="newIngr" id="newIngr0" type="text" name="ingredient" size="40">
-        Amount <input class="newQty" id="newQty0" type="number" name="qty" style="width: 4em">
-        <label for="unit"> units </label>
-        <select name="unit" id="newUnit0">
+        Ingredient * <input class="newIngr" id="newIngr0" type="text" name="ingredient" size="40" required>
+        Amount * <input class="newQty" id="newQty0" type="number" name="qty" style="width: 4em" required>
+        <label for="unit"> units *</label>
+        <select name="unit" id="newUnit0" required>
             <option value="gram"> gram </option>
             <option value="oz"> oz </option>
             <option value="ml"> ml </option>
@@ -37,7 +39,7 @@
     </p>
     <ul id='steps'>
         <li>
-            Instructions <input class="newInstr input-group input-group-lg" id="newInstr0" type="text" name="step" size=300>
+            Instructions * <input class="newInstr input-group input-group-lg" id="newInstr0" type="text" name="step" size=300 required>
             <button class="addInstr" id="instrBttn0"> add </button>
         </li>
     </ul>
