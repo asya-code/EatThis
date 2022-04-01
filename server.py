@@ -142,6 +142,16 @@ def add_new_recipe():
     
     return redirect(f'/recipes/{updated_recipe_id}')
 
+@app.route("/edit_<recipe_id>")
+def edit_recipe(recipe_id):
+    old_recipe = crud.get_recipe_by_id(recipe_id)
+    old_recipe.steps = crud.get_steps_by_recipe_id(recipe_id)
+    old_recipe.ingredients = crud.get_ings_by_recipe_id(recipe_id)
+    new_recipe= crud.create_recipe(title="new_recipe", added_by=session['current_user'])
+    db.session.add(new_recipe)
+    db.session.commit()
+    return render_template("edit_recipe.html", recipe_id=new_recipe.recipe_id, old_recipe=old_recipe )
+
 @app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
     recipe = crud.get_recipe_by_id(recipe_id)

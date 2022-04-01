@@ -92,7 +92,7 @@ def get_step_by_id(step_id):
 
 def get_steps_by_recipe_id(given_recipe_id):
     """Return all steps for particulat recipe."""
-    return Step.querry.filter(Step.recipe_id==given_recipe_id).all()
+    return Step.query.filter(Step.recipe_id==given_recipe_id).all()
 
 
 

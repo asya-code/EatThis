@@ -21,8 +21,12 @@
         <button id="add_fav"> Let's save it! </button>
     </div>
     {% else %}
-    {{recipe.title}} is in yous Favorites!
+    "{{recipe.title}}" is in yous Favorites! 
+    Do you want to edit it?
+    <a id="edit_recipe" href="/edit_{{recipe.recipe_id}}"> Let's edit </a>
+
     {% endif %}
+
     <p>
     </p>
     <div>
