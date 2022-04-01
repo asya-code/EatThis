@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Adding new awesome recipe {% endblock %}
+{% block content%}
+
+<form id={{recipe_id}} action="/add_new_recipe" method="post" enctype="multipart/form-data">
+    <input type="hidden" id='hidden_input' name='recipe_id' value={{recipe_id}}>
+    <p>All fields marked with * are required</p>
+
+    <p>
+        Recipe name * <input type="text" name="title" placeholder={{old_recipe.title}} required>
+    </p>
+    <p>
+        cuisine <input type="text" name="cuisine" placeholder={{old_recipe.cuisine}}>
+        diet <input type="text" name="diet" placeholder={{old_recipe.diet}}>
+    </p>
+
+    <ul id='ingredients'>
+        {% for ingredient in old_recipe.ingredients %}
+        <li>
+        Ingredient * <input class="newIngr" id="newIngr0" type="text" name="ingredient" size="40" placeholder={{ingredient.ing_name}} required>
+        Amount * <input class="newQty" id="newQty0" type="number" name="qty" style="width: 4em" placeholder={{ingredient.qty}} required>
+        <label for="unit"> units *</label>
+        <select name="unit" id="newUnit0" required>
+            {% if ingredient.unit=="gram" %}
+            <option value="gram" selected> gram </option>
+            {% else %}
+            <option value="gram"> gram </option>
+            {% endif %}
+
+            {% if ingredient.unit=="oz" %}
+            <option value="oz" selected> oz </option>
+            {% else %}
+            <option value="oz"> oz </option>
+            {% endif %}
+
+            <option value="ml"> ml </option>
+            {% if ingredient.unit=="ml" %}
+            <option value="ml" selected> ml </option>
+            {% else %}
+            <option value="ml"> ml </option>
+            {% endif %}
+
+            {% if ingredient.unit=="fl oz" %}
+            <option value="fl oz" selected> fl oz </option>
+            {% else %}
+            <option value="fl oz"> fl oz </option>
+            {% endif %}
+
+
+            {% if ingredient.unit=="cup" %}
+            <option value="cup" selected> cup </option>
+            {% else %}
+            <option value="cup"> cup </option>
+            {% endif %}
+
+        </select>
+        {% endfor %}
+        <button class="addIngr" id="ingrBttn0"> add </button>
+        </li>
+    </ul>
+    <p>
+        <button class="nextIngr"> Do you want to add another ingredient? </button>
+    </p>
+
+
+
+    <p>
+    </p>
+    <ul id='steps'>
+        {% for step in old_recipe.steps %}
+        <li>
+            Instructions * <input class="newInstr input-group input-group-lg" id="newInstr0" type="text" name="step" size=300 placeholder={{step.instruction}} required>
+            <button class="addInstr" id="instrBttn0"> add </button>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <p>
+    <button class="addStep"> Do you want to add another step? </button>
+    </p>
+
+    <input type="file" name="recipe_img">
+    <div>
+        <input type="checkbox" name="private" value="True" id="privateNewRecipe">
+        <label for="privateNewRecipe"> Keep it for myself only </label>
+    </div>
+    
+    <p>
+    <button id="addRecipe" type="submit"> Add new recipe </button>
+    </p>
+</form>
+<script src='/static/js/add_recipe.js'></script>
+
+{% endblock %}
