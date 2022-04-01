@@ -29,7 +29,8 @@ def show_about():
 def all_recipes():
     """View all recipes."""
     recipes = crud.get_recipes()
-    return render_template("recipes.html", recipes=recipes)
+    message = f"Check out our recipes!"
+    return render_template("recipes.html", recipes=recipes, message=message)
 
 @app.route("/user_recipes")
 def user_recipes():
@@ -187,13 +188,15 @@ def search():
     by_meal = crud.get_recipes_by_meal(search_word)
     for recipe in by_meal:
         results.append(recipe)
-    return render_template("recipes.html", recipes=results)
+    message = f"Recipes results for {request.args.get('cuisine')}:"
+    return render_template("recipes.html", recipes=results, message=message)
 
 @app.route('/ingredient_search')
 def ingredient_search():
     ing_name = request.args.get('ingredient')
     results = crud.get_recipes_by_ingredient(ing_name)
-    return render_template("recipes.html", recipes=results)
+    message = f"Recipes results for {request.args.get('ingredient')}:"
+    return render_template("recipes.html", recipes=results, message=message)
 
 @app.route('/add_fav', methods=["POST"])
 def add_fav():
