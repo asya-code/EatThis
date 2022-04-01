@@ -64,8 +64,10 @@ img_list = ["https://res.cloudinary.com/eat-this/image/upload/v1648600814/10_umf
 for cur_recipe in recipes:
     recipes_id.append(cur_recipe.recipe_id)
     # Assotiate images to recipes:
-    new_image = crud.create_image(url=f"{choice(img_list)}",recipe_id=cur_recipe.recipe_id)
-    model.db.session.add(new_image)
+    image_1 = crud.create_image(url=f"{choice(img_list)}",recipe_id=cur_recipe.recipe_id)
+    image_2 = crud.create_image(url=f"{choice(img_list)}",recipe_id=cur_recipe.recipe_id)
+    model.db.session.add(image_1)
+    model.db.session.add(image_2)
     num += 1
     for n in range(randint(3, 6)):
         ingredient = crud.create_ingredient(ing_name=choice(ingredients), qty=randint(1, 10), recipe_id=(cur_recipe.recipe_id), unit=choice(units))

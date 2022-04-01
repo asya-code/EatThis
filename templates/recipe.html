@@ -2,14 +2,14 @@
 {% block title %} {{recipe.title}} {% endblock %}
 
 {% block content%}
-<div class="card text-white bg-info mb-3">
-    <div style="height:300px; overflow:hidden;">
+<span class="card text-white bg-info mb-3" style="display:inline-block;">
     {% for image in recipe.images %}
-        <img class="card-img-top" src="{{image.url}}" 
-        alt="{{ recipe.title }}" style="vertical-align:middle; 
-            transform:translateY(-50%);">
+       
+        <img src="{{image.url}}" 
+        alt="{{ recipe.title }}" style="height:300px; width:300;">
+
         {% endfor %}
-    </div>
+    </span>
 
     <div class="card-body">
       <h5 class="card-title">{{ recipe.title }}</h5>
