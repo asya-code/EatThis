@@ -32,7 +32,7 @@ def all_recipes():
         recipes = crud.get_recipes()
     else:
         recipes = crud.get_public_recipes()
-        message = "Check out our recipes!"
+    message = "Check out these recipes!"
     return render_template("recipes.html", recipes=recipes, message=message)
 
 @app.route("/user_recipes")
@@ -124,10 +124,12 @@ def add_new_recipe():
     new_title = request.form.get("title")
     new_cuisine = request.form.get("cuisine")
     new_diet = request.form.get("diet")
+    new_private = bool(request.form.get("private"))
     updated_recipe = crud.get_recipe_by_id(updated_recipe_id)
     updated_recipe.title = new_title
     updated_recipe.cuisine = new_cuisine
     updated_recipe.diet = new_diet
+    updated_recipe.private = new_private
     if request.files['recipe_img']:
         image = request.files['recipe_img']
         result = cloudinary.uploader.upload(image, api_key=CLOUDINARY_KEY,
