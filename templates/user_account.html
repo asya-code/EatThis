@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Eat This! {% endblock %}
+
+{% block content %}
+
+<p>
+    Hi, {{user.full_name}}!
+</p>
+
+<p>
+    Set up your interests:
+</p>
+    <form id="user_preferences" action="/add_preference" method="post" enctype="multipart/form-data">
+        I'm interested in 
+        <select name="cuisine" id="newPref0">
+            <option value="indonesian"> indonesian </option>
+            <option value="turkish"> turkish </option>
+            <option value="thai"> thai </option>
+            <option value="moroccan"> moroccan </option>
+            <option value="japanese"> japanese </option>
+        </select>
+        <label for="cuisine"> cuisine *</label>
+        <button id="addPref0"> Do you want to add another interest? </button>
+    </form>
+        
+   
+    <p id="userEmail"> Email: {{user.email}}
+            <button class="editEmail" id="editEmail"> edit </button>
+    </p>
+
+<script src='/static/js/user_account.js'></script>
+{% endblock %}

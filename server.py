@@ -213,16 +213,21 @@ def ingredient_search():
     message = f"Recipes results for {request.args.get('ingredient')}:"
     return render_template("recipes.html", recipes=results, message=message)
 
-@app.route('/add_fav', methods=["POST"])
+@app.route('/add_fav')
+#, methods=["POST"]
 def add_fav():
     user_id = session['current_user']
     #import pdb; pdb.set_trace()
-    recipe_id = request.json.get('favRecipeId')        
-    title = request.json.get('favRecipeTitle')
+    recipe_id = request.json.get('favRecipeId')
+    recipe = crud.get_recipe_by_id(recipe_id)      
+    # title = request.json.get('favRecipeTitle')
+    favorites = crud.get_favs_by_user_id(session['current_user'])
+
     new_fav = crud.create_favorite(recipe_id, user_id)
+    rating = crud.get_favs_count_by_recipe_id(recipe_id)
     db.session.add(new_fav)
     db.session.commit()
-    return f'{title} is saved into your Favorite recipes!'
+    return redirect("/recipes/<recipe_id>")
 
 @app.route('/user_favorite')
 def show_favorite():
@@ -232,6 +237,32 @@ def show_favorite():
 
         favorite_recipes.append(crud.get_recipe_by_id(fav.recipe_id))
     return render_template("user_favorite.html", favorite_recipes=favorite_recipes)
+
+@app.route('/my_profile')
+def user_profile():
+    user = crud.get_user_by_id(session['current_user'])
+    return render_template("user_account.html", user=user)
+
+@app.route("/change_email", methods=["POST"])
+def change_email():
+    user = crud.get_user_by_id(session['current_user'])
+    new_email = request.form.get('new_email')
+    user.email = new_email
+    db.session.commit()
+    return new_email
+
+@app.route('/add_preference', methods=["POST"])
+def add_preference():
+    preference = request.json.get('instructionText')
+    order = int(request.json.get('order'))
+    recipe_id = int(request.json.get('recipe_id'))
+    new_instr = crud.create_step(order=order, 
+        instruction=instr_text, recipe_id=recipe_id)
+    db.session.add(new_instr)
+    db.session.commit()
+    
+    return new_instr.instruction
+
 
 if __name__ == "__main__":
     connect_to_db(app)

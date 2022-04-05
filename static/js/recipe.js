@@ -1,6 +1,6 @@
 const favBttn=document.querySelector('#add_fav');
 favBttn.addEventListener('click', (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     const favData = {
         favRecipeId: document.querySelector('#hidden_recipe_id').value,
         favRecipeTitle: document.querySelector('#hidden_recipe_title').value,
@@ -12,10 +12,11 @@ favBttn.addEventListener('click', (evt) => {
             'Content-Type': 'application/json',
         },
     })
-    .then (response => response.text())
-    .then (responseText => {
-        alert(responseText);
-    });
-    document.querySelector('#add_fav').disabled = true;
+    .then (document.querySelector('#add_fav').remove())
+    // .then (response => response.text())
+    // .then (responseText => {
+    //     alert(responseText);
+    // });
+    // document.querySelector('#add_fav').disabled = true;
 
 });

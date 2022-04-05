@@ -80,4 +80,8 @@ for n in range(5):
     favorite = crud.create_favorite(recipe_id=choice(recipes_id), user_id=choice(users_id))
     model.db.session.add(favorite)
 
+for n in range (10):
+    preference = crud.create_preference(user_id=choice(users_id), interest=choice(cuisines+diets))
+    model.db.session.add(preference)
+
 model.db.session.commit()

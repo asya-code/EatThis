@@ -1,4 +1,4 @@
-from model import db, User, Recipe, Step, Favorite, Ingredient, Image, connect_to_db
+from model import db, User, Recipe, Step, Favorite, Ingredient, Image, Preference, connect_to_db
 from datetime import datetime, date
 
 def create_user(email, password, username, full_name=None, created_at=date.today()):
@@ -135,7 +135,8 @@ def get_favs_by_recipe_id(given_recipe_id):
     """Return all users who has this particular recipe in favorites""" 
     return Favorite.query.filter(Favorite.recipe_id==given_recipe_id).all()
 
-
+def get_favs_count_by_recipe_id(given_recipe_id):
+    return Favorite.query.filter(Favorite.recipe_id==given_recipe_id).count()
 
 def create_ingredient(ing_name, qty,recipe_id, unit, image=None):
     """Create and return a new favorite object (user-recipe pair)."""
@@ -190,6 +191,38 @@ def get_imgs_by_step_id(given_step_id):
     """Return all images for particular step.""" 
     return Image.query.filter(Image.step_id==given_step_id).all()
 '''
+
+def create_preference(user_id, interest):
+    """Create and return a new preference object (user-interest pair)."""
+    preference = Preference(
+        user_id=user_id,
+        preference=interest)
+    return preference
+
+def get_most_preffered():
+    """Get 7 first most often "preffered" interests"""
+   # all_faved = Favorite.query.group_by(Recipe.recipe_id).having(db.func.count(Favorite.user_id)>2).all()
+    all_preferred = db.session.query(db.func.count(Preference.pref_id), Preference.preference).group_by(Preference.user_id).all()
+    count = 1
+    most_preferred = []
+    for pref in all_preferred:
+        if count < 7:
+            interest = pref.preference
+            most_preferred.append(interest)
+            count += 1
+        else:
+            break
+    return most_preferred
+
+def get_preferences():
+    """Return all preferences."""
+    return Preference.query.all()
+
+def get_prefs_by_user_id(given_user_id):
+    """Return all preferences for particular user."""
+    return Preference.query.filter(Preference.user_id==given_user_id).all()
+
+
 
 
 if __name__ == "__main__":

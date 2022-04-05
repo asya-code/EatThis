@@ -17,6 +17,7 @@ class User(db.Model):
     user_image = db.Column(db.String)
     # user.recipes 
     # user.favorites
+    # user.preferences
     def __repr__(self):
         return f"<User user_id={self.user_id}, email={self.email}, username={self.username}>"
 
@@ -99,6 +100,19 @@ class Image(db.Model):
 
     def __repr__(self):
         return f"<Image img_id={self.img_id}, recipe_id={self.recipe_id}>"
+
+class Preference(db.Model):
+    """User's interests (diet, cousine)."""
+    __tablename__ = "preferences"
+
+    pref_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    preference = db.Column(db.String,nullable=False)
+    user = db.relationship("User", backref="preferences")
+
+    def __repr__(self):
+        return f"<Preferences for user {self.user_id}: {self.preference}>"
+
 
 def connect_to_db(app, db_uri="postgresql:///eat_this", echo=True):
     """Connect to database."""

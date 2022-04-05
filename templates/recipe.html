@@ -29,7 +29,9 @@
 
         {% else %}
             <div>
-                <button id="add_fav"> I like it! </button>
+                <form action="/add_fav">
+                    <button type="submit" id="add_fav"> I like it! </button>
+                </form>
             </div>
         {% endif %}
 
@@ -65,5 +67,5 @@
   </div>
   <input type="hidden" id='hidden_recipe_id' name='recipe_id' value={{recipe.recipe_id}}>
   <input type="hidden" id='hidden_recipe_title' name='title' value={{recipe.title}}>
-  <script src='/static/js/recipe.js'></script>
+  <!-- <script src='/static/js/recipe.js'></script> -->
 {% endblock %}
