@@ -230,22 +230,17 @@ def show_favorite():
 @app.route('/my_profile')
 def user_profile():
     user = crud.get_user_by_id(session['current_user'])
+    #preferecnces = crud.get_prefs_by_user_id(session['current_user'])
     return render_template("user_account.html", user=user)
 
 @app.route('/recommendations')
 def show_recommendations():
     user = crud.get_user_by_id(session['current_user'])
     prefs = crud.get_prefs_by_user_id(user.user_id)
-    print("\n \n \n \n \n" )
-    print(prefs)
-    print("\n \n \n \n \n ")
     preferences = []
     for pref in prefs:
         preferences.append(pref.preference)
     recommendations = crud.recommendations(user.user_id)
-    print("\n \n \n \n \n" )
-    print(recommendations)
-    print("\n \n \n \n \n" )
     return render_template("recommendations.html", user=user, preferences=preferences, recommendations=recommendations)
 
 @app.route("/change_email", methods=["POST"])
@@ -269,8 +264,23 @@ def change_email():
 #     return new_instr.instruction
 @app.route("/add_preferences", methods=["POST"])
 def add_preferences():
-    preferences = request.json.get("prefs")
+    user_id = session['current_user']
+    user = crud.get_user_by_id(user_id)
+    prefIndex = 0
     pass
+    # print("\n\n\n\n\n\n\n")
+    # while len(request.json) > 0:
+    #     interest = request.json.get(f"newPref{prefIndex}")
+    #     print("\n\n\n\n\n\n\n")
+    #     print(interest)
+    #     print("\n\n\n\n\n\n\n")
+
+    #     preference = crud.create_preference(user_id, interest)
+    #     db.session.add(preference)
+    #     request.json.pop(interest)
+    #     prefIndex += 1
+    # db.session.commit()
+    # return render_template("user_account.html", user=user)
 
 
 if __name__ == "__main__":

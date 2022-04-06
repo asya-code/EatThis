@@ -3,19 +3,31 @@
 
 {% block content %}
 
-<p>
-    Hi, {{user.full_name}}!
-</p>
+<h2>
+    Hi, {{user.user_id}}!
+</h2>
+
+<h3 id='interests'>
+    You're interested in:
+    {% for pref in user.preferences %}
+        pref
+    {% endfor %}
+</h3>
+
+
 
 <p>
     Set up your interests:
 </p>
-    <form id="user_preferences" action="/add_preferences" method="post" enctype="multipart/form-data">
+    <form id="user_preferences" action="/add_preferences" method="POST" enctype="multipart/form-data">
         I'm interested in
         <p>
-            <input type="text" name="pref"> cuisine/diet
+            <input type="text" id="newPref0" name="pref"> cuisine/diet
         <button class="addPref" id="addPref0"> Do you want to add another interest? </button>
         </p>
+
+
+
     </form>
         
    
@@ -23,7 +35,7 @@
             <button class="editEmail" id="editEmail"> edit </button>
     </p>
     <p>
-    <form id="newEmailForm" action="/change_email" method="post" hidden="true">
+    <form id="newEmailForm" action="/change_email" method="POST" hidden="true">
         <p> 
             New email <input id="newEmail" type="text" name="email">
         </p>
