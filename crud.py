@@ -192,6 +192,22 @@ def get_imgs_by_step_id(given_step_id):
     return Image.query.filter(Image.step_id==given_step_id).all()
 '''
 
+def general_search(search_word):
+    results = []
+    by_cuisine = get_recipes_by_cuisine(search_word)
+    for recipe in by_cuisine:
+        results.append(recipe)
+    by_title = get_recipes_by_title(search_word)
+    for recipe in by_title:
+        results.append(recipe)
+    by_diet = get_recipes_by_diet(search_word)
+    for recipe in by_diet:
+        results.append(recipe)
+    by_meal = get_recipes_by_meal(search_word)
+    for recipe in by_meal:
+        results.append(recipe)
+    return results
+
 def create_preference(user_id, interest):
     """Create and return a new preference object (user-interest pair)."""
     preference = Preference(
@@ -222,7 +238,14 @@ def get_prefs_by_user_id(given_user_id):
     """Return all preferences for particular user."""
     return Preference.query.filter(Preference.user_id==given_user_id).all()
 
-
+def recommendations(given_user_id):
+    """Retusn list of recommended recipes based on user's preferences (interests)"""
+    recommendations = []
+    prefs = get_prefs_by_user_id(given_user_id)
+    for pref in prefs:
+        for recipe in general_search(pref.preference):
+            recommendations.append(recipe)
+    return recommendations
 
 
 if __name__ == "__main__":

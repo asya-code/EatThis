@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} We recommend {% endblock %}
+{% block content%}
+Hi, {{user.username}}! You've mentioned, what you're interested in 
+{% for pref in preferences %} 
+{{pref}},
+{% endfor%}
+
+so you may like:
+
+{% for recipe in recommendations %} 
+<div class="card text-white bg-info mb-3">
+    <div style="height:300px; overflow:hidden;">
+      {% if recipe.images %}
+      <img class="card-img-top" src="{{ recipe.images[0].url }}" 
+      alt="{{ recipe.title }}" style="vertical-align:middle; 
+        ">
+          {% endif %}
+  </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{ recipe.title }}</h5>
+      <a href="/recipes/{{ recipe.recipe_id }}" class="btn btn-primary">View Recipe</a>
+    </div>
+  </div>
+{% endfor%}
+
+{% endblock %}

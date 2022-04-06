@@ -37,7 +37,7 @@ nextIngrBttn.addEventListener('click', (evt) => {
     document.querySelector('#ingredients').insertAdjacentHTML('beforeend', 
         ` <li> Ingredient <input class="newIngr" id="newIngr${ingIndex}"`+
         `type="text" name="ingredient" size="40">`+
-        ` Amount <input class="newQty" id="newQty${qtyIndex}"`+
+        `Amount<input class="newQty" id="newQty${qtyIndex}"`+
         `type="number" name="qty" style="width: 4em">`+
         `<label for="unit"> units </label>`+
         `<select name="unit" id="newUnit${unitIndex}">`+

@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db, db, User, Recipe, Step, Favorite, Ingredient, Image
 import cloudinary
@@ -189,20 +190,7 @@ def add_ingredient():
 @app.route('/search')
 def search():
     search_word = request.args.get('cuisine').lower()
-    #print("\n", type(given_cuisine), "\n")
-    results = []
-    by_cuisine = crud.get_recipes_by_cuisine(search_word)
-    for recipe in by_cuisine:
-        results.append(recipe)
-    by_title = crud.get_recipes_by_title(search_word)
-    for recipe in by_title:
-        results.append(recipe)
-    by_diet = crud.get_recipes_by_diet(search_word)
-    for recipe in by_diet:
-        results.append(recipe)
-    by_meal = crud.get_recipes_by_meal(search_word)
-    for recipe in by_meal:
-        results.append(recipe)
+    results = crud.general_search(search_word)
     message = f"Recipes results for {request.args.get('cuisine')}:"
     return render_template("recipes.html", recipes=results, message=message)
 
@@ -234,6 +222,7 @@ def show_favorite():
     favorites = crud.get_favs_by_user_id(session['current_user'])
     favorite_recipes = []
     for fav in favorites:
+        pass
 
         favorite_recipes.append(crud.get_recipe_by_id(fav.recipe_id))
     return render_template("user_favorite.html", favorite_recipes=favorite_recipes)
@@ -243,25 +232,45 @@ def user_profile():
     user = crud.get_user_by_id(session['current_user'])
     return render_template("user_account.html", user=user)
 
+@app.route('/recommendations')
+def show_recommendations():
+    user = crud.get_user_by_id(session['current_user'])
+    prefs = crud.get_prefs_by_user_id(user.user_id)
+    print("\n \n \n \n \n" )
+    print(prefs)
+    print("\n \n \n \n \n ")
+    preferences = []
+    for pref in prefs:
+        preferences.append(pref.preference)
+    recommendations = crud.recommendations(user.user_id)
+    print("\n \n \n \n \n" )
+    print(recommendations)
+    print("\n \n \n \n \n" )
+    return render_template("recommendations.html", user=user, preferences=preferences, recommendations=recommendations)
+
 @app.route("/change_email", methods=["POST"])
 def change_email():
     user = crud.get_user_by_id(session['current_user'])
-    new_email = request.form.get('new_email')
+    new_email = request.args.get('newEmail')
     user.email = new_email
     db.session.commit()
     return new_email
 
-@app.route('/add_preference', methods=["POST"])
-def add_preference():
-    preference = request.json.get('instructionText')
-    order = int(request.json.get('order'))
-    recipe_id = int(request.json.get('recipe_id'))
-    new_instr = crud.create_step(order=order, 
-        instruction=instr_text, recipe_id=recipe_id)
-    db.session.add(new_instr)
-    db.session.commit()
+# @app.route('/add_preference', methods=["POST"])
+# def add_preference():
+#     preference = request.json.get('instructionText')
+#     order = int(request.json.get('order'))
+#     recipe_id = int(request.json.get('recipe_id'))
+#     new_instr = crud.create_step(order=order, 
+#         instruction=instr_text, recipe_id=recipe_id)
+#     db.session.add(new_instr)
+#     db.session.commit()
     
-    return new_instr.instruction
+#     return new_instr.instruction
+@app.route("/add_preferences", methods=["POST"])
+def add_preferences():
+    preferences = request.json.get("prefs")
+    pass
 
 
 if __name__ == "__main__":
