@@ -8,17 +8,13 @@
 </h2>
 
 <h3 id='interests'>
-    You're interested in:
+    You're interested in
     {% for pref in user.preferences %}
-        pref
+        {{pref.preference}}, 
     {% endfor %}
+    do you want to add new interests?
 </h3>
 
-
-
-<p>
-    Set up your interests:
-</p>
     <form id="user_preferences" method="POST" enctype="multipart/form-data">
         I'm interested in
         <p>

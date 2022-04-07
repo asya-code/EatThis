@@ -241,7 +241,7 @@ def show_recommendations():
     for pref in prefs:
         preferences.append(pref.preference)
     recommendations = crud.recommendations(user.user_id)
-    return render_template("recommendations.html", user=user, preferences=preferences, recommendations=recommendations)
+    return render_template("recommendations.html", user=user, recommendations=recommendations)
 
 @app.route("/change_email", methods=["POST"])
 def change_email():
@@ -251,21 +251,10 @@ def change_email():
     db.session.commit()
     return new_email
 
-# @app.route('/add_preference', methods=["POST"])
-# def add_preference():
-#     preference = request.json.get('instructionText')
-#     order = int(request.json.get('order'))
-#     recipe_id = int(request.json.get('recipe_id'))
-#     new_instr = crud.create_step(order=order, 
-#         instruction=instr_text, recipe_id=recipe_id)
-#     db.session.add(new_instr)
-#     db.session.commit()
-    
-#     return new_instr.instruction
 @app.route("/add_preferences", methods=["POST"])
 def add_preferences():
     user_id = session['current_user']
-    user = crud.get_user_by_id(user_id)
+    preferences = []
     prefs = request.get_json()
     for pref in prefs:
         interest = crud.create_preference(user_id=user_id, interest=pref)

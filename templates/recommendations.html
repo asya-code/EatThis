@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block title %} We recommend {% endblock %}
 {% block content%}
-Hi, {{user.username}}! You've mentioned, what you're interested in 
-{% for pref in preferences %} 
-{{pref}},
-{% endfor%}
+<h3>
+    Hi, {{user.username}}! You've mentioned, what you're interested in 
+        {% for pref in user.preferences %} 
+            {{pref.preference}},
+        {% endfor%}
 
-so you may like:
-
+        so you may like:
+</h3>
 {% for recipe in recommendations %} 
 <div class="card text-white bg-info mb-3">
     <div style="height:300px; overflow:hidden;">
