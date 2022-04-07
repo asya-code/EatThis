@@ -267,24 +267,15 @@ def add_preferences():
     user_id = session['current_user']
     user = crud.get_user_by_id(user_id)
     prefs = request.get_json()
-    print("\n\n\n\n\n\n\n")
-    print(prefs)
-    print("\n\n\n\n\n\n\n")
     for pref in prefs:
-        pass
+        interest = crud.create_preference(user_id=user_id, interest=pref)
+        db.session.add(interest)
+    db.session.commit()
+    pass
     
-    # print("\n\n\n\n\n\n\n")
-    # while len(request.json) > 0:
-    #     interest = request.json.get(f"newPref{prefIndex}")
     #     print("\n\n\n\n\n\n\n")
     #     print(interest)
     #     print("\n\n\n\n\n\n\n")
-
-    #     preference = crud.create_preference(user_id, interest)
-    #     db.session.add(preference)
-    #     request.json.pop(interest)
-    #     prefIndex += 1
-    # db.session.commit()
     # return preferences
 
 
