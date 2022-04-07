@@ -266,8 +266,13 @@ def change_email():
 def add_preferences():
     user_id = session['current_user']
     user = crud.get_user_by_id(user_id)
-    prefIndex = 0
-    pass
+    prefs = request.get_json()
+    print("\n\n\n\n\n\n\n")
+    print(prefs)
+    print("\n\n\n\n\n\n\n")
+    for pref in prefs:
+        pass
+    
     # print("\n\n\n\n\n\n\n")
     # while len(request.json) > 0:
     #     interest = request.json.get(f"newPref{prefIndex}")
@@ -280,7 +285,7 @@ def add_preferences():
     #     request.json.pop(interest)
     #     prefIndex += 1
     # db.session.commit()
-    # return render_template("user_account.html", user=user)
+    # return preferences
 
 
 if __name__ == "__main__":

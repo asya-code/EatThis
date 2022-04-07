@@ -28,7 +28,7 @@ function addPref(evt){
     evt.preventDefault();
     prefIndex+=1
     document.querySelector('#user_preferences').insertAdjacentHTML('beforeend', 
-    `<p><input type="text" name="pref"> cuisine/diet`+
+    `<p><input type="text" name="pref${prefIndex}"> cuisine/diet`+
     `<button class="addPref" id="addPref${prefIndex}">`+
     `Do you want to add another interest?</button></p>`);
     document.querySelector(`#addPref${prefIndex}`).addEventListener('click', (evt) => {
@@ -46,22 +46,25 @@ function preferenceField(){
 preferenceField()
 
 
-// const saveChangesBttn = document.querySelector('#saveChangesBttn');
-// saveChangesBttn.addEventListener('click',() => {
-//     let preferences = [];
-//     const num_preferences = document.querySelectorAll('.addPref').length
-//     for (let i = 0; i <= num_preferences; i += 1){
-//         preferences.push(document.querySelector(`#newPref${i}`).value)       
-//     }
-//     fetch('/add_preferences',{
-//         method: 'POST',
-//         body: JSON.stringify(preferences),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     })
-//     .then(response => response.json())
-//     .then (responseData => {
-//         document.querySelector('#user_preferences').innerText = responseData;
-//     })
-// });
+const saveChangesBttn = document.querySelector('#save_changes');
+saveChangesBttn.addEventListener('click',(evt) => {
+    evt.preventDefault();
+    let preferences = [];
+    const num_preferences = document.querySelectorAll('.addPref').length
+    console.log(num_preferences)
+    for (let i = 0; i < num_preferences; i += 1){
+        preferences.push(document.querySelector(`#newPref${i}`).value)       
+    console.log(preferences)
+    }
+    fetch('/add_preferences',{
+        method: 'POST',
+        body: JSON.stringify(preferences),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then (responseData => {
+        document.querySelector('#user_preferences').innerText = responseData;
+    })
+});
