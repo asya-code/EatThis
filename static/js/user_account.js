@@ -28,7 +28,7 @@ function addPref(evt){
     evt.preventDefault();
     prefIndex+=1
     document.querySelector('#user_preferences').insertAdjacentHTML('beforeend', 
-    `<p><input type="text" name="pref${prefIndex}"> cuisine/diet`+
+    `<p><input type="text" name="pref${prefIndex}" id="newPref${prefIndex}"> cuisine/diet`+
     `<button class="addPref" id="addPref${prefIndex}">`+
     `Do you want to add another interest?</button></p>`);
     document.querySelector(`#addPref${prefIndex}`).addEventListener('click', (evt) => {
@@ -53,9 +53,15 @@ saveChangesBttn.addEventListener('click',(evt) => {
     const num_preferences = document.querySelectorAll('.addPref').length
     console.log(num_preferences)
     for (let i = 0; i < num_preferences; i += 1){
-        preferences.push(document.querySelector(`#newPref${i}`).value)       
-    console.log(preferences)
+        console.log(i);
+        console.log(`#newPref${i}`)      
+        preferences.push(document.querySelector(`#newPref${i}`).value)
     }
+    // const prefs = document.querySelectorAll('.addPref')
+    // for (let pref in prefs) {
+    //     preferences.push(pref.value)
+    // }
+
     fetch('/add_preferences',{
         method: 'POST',
         body: JSON.stringify(preferences),
@@ -65,6 +71,9 @@ saveChangesBttn.addEventListener('click',(evt) => {
     })
     .then(response => response.json())
     .then (responseData => {
-        document.querySelector('#user_preferences').innerText = responseData;
+        console.log(responseData)
+        for (let key in responseData) {
+            document.querySelector('#interests').insertAdjacentHTML('beforeend', `<li>${responseData[key]}</li>`)
+    }
     })
 });

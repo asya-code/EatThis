@@ -7,19 +7,21 @@
     Hi, {{user.user_id}}!
 </h2>
 
-<h3 id='interests'>
-    You're interested in
-    {% for pref in user.preferences %}
-        {{pref.preference}}, 
-    {% endfor %}
-    do you want to add new interests?
+<h3>
+    <ul id="interests">
+        You're interested in
+        {% for pref in user.preferences %}
+        <li> {{pref.preference}}, </li>
+        {% endfor %}
+        do you want to add new interests?
+    </ul>
 </h3>
 
     <form id="user_preferences" method="POST" enctype="multipart/form-data">
         I'm interested in
         <p>
             <input type="text" class="newPref" id="newPref0" name="pref0"> cuisine/diet
-        <button class="addPref" id="addPref0"> Do you want to add another interest? </button>
+            <button class="addPref" id="addPref0"> Do you want to add another interest? </button>
         </p>
 
 

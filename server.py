@@ -156,12 +156,13 @@ def edit_recipe(recipe_id):
 @app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
     recipe = crud.get_recipe_by_id(recipe_id)
+    rating = crud.get_favs_count_by_recipe_id(recipe_id)
     fav_list = crud.get_favs_by_user_id(session['current_user'])
     fav_ids = []
     for fav in fav_list:
         fav_ids.append(fav.recipe_id)
     print(fav_ids)
-    return render_template("recipe.html", recipe=recipe, favorites=fav_ids)
+    return render_template("recipe.html", recipe=recipe, favorites=fav_ids, rating=rating)
 
 @app.route('/add_instr', methods=["POST"])
 def add_step():
@@ -201,21 +202,15 @@ def ingredient_search():
     message = f"Recipes results for {request.args.get('ingredient')}:"
     return render_template("recipes.html", recipes=results, message=message)
 
-@app.route('/add_fav')
-#, methods=["POST"]
+@app.route('/add_fav', methods=["POST"])
 def add_fav():
     user_id = session['current_user']
-    #import pdb; pdb.set_trace()
     recipe_id = request.json.get('favRecipeId')
-    recipe = crud.get_recipe_by_id(recipe_id)      
-    # title = request.json.get('favRecipeTitle')
-    favorites = crud.get_favs_by_user_id(session['current_user'])
-
     new_fav = crud.create_favorite(recipe_id, user_id)
     rating = crud.get_favs_count_by_recipe_id(recipe_id)
     db.session.add(new_fav)
     db.session.commit()
-    return redirect("/recipes/<recipe_id>")
+    return "sucsess!"
 
 @app.route('/user_favorite')
 def show_favorite():
@@ -259,13 +254,17 @@ def add_preferences():
     for pref in prefs:
         interest = crud.create_preference(user_id=user_id, interest=pref)
         db.session.add(interest)
+        preferences.append(pref)
+
     db.session.commit()
-    pass
-    
+    print("\n\n\n\n\n\n\n")
+    print(preferences)
+    print("\n\n\n\n\n\n\n")
+    return jsonify(preferences)
+
     #     print("\n\n\n\n\n\n\n")
     #     print(interest)
     #     print("\n\n\n\n\n\n\n")
-    # return preferences
 
 
 if __name__ == "__main__":

@@ -12,11 +12,6 @@ favBttn.addEventListener('click', (evt) => {
             'Content-Type': 'application/json',
         },
     })
-    .then (document.querySelector('#add_fav').remove())
-    // .then (response => response.text())
-    // .then (responseText => {
-    //     alert(responseText);
-    // });
-    // document.querySelector('#add_fav').disabled = true;
-
+    document.querySelector('#add_fav').remove()
+    document.querySelector('#new_rating').innerHTML = String(Number(document.querySelector('#new_rating').innerHTML) + 1) 
 });
