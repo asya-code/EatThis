@@ -101,7 +101,7 @@ def register_user():
     if crud.get_user_by_email(email):
         flash("This user already exists, please, log in")    
     else:
-        new_user = crud.create_user(email, password, username), full_name
+        new_user = crud.create_user(email, password, username, full_name)
         db.session.add(new_user)
         db.session.commit()
         flash(f"Welcome, {username}!")
@@ -148,7 +148,7 @@ def edit_recipe(recipe_id):
     old_recipe = crud.get_recipe_by_id(recipe_id)
     old_recipe.steps = crud.get_steps_by_recipe_id(recipe_id)
     old_recipe.ingredients = crud.get_ings_by_recipe_id(recipe_id)
-    new_recipe= crud.create_recipe(title="new_recipe", added_by=session['current_user'])
+    new_recipe= crud.create_recipe(title=old_recipe.title, added_by=session['current_user'])
     db.session.add(new_recipe)
     db.session.commit()
     return render_template("edit_recipe.html", recipe_id=new_recipe.recipe_id, old_recipe=old_recipe )
