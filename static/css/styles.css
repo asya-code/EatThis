@@ -1,0 +1,40 @@
+body {
+    background: url("/static/images/background5.jpg") no-repeat center center; 
+    background-size: cover;
+    font-family: 'Source Sans Pro', sans-serif;
+    backdrop-filter: blur(5px)  
+  }
+
+.main {
+    font-family: 'Source Sans Pro', sans-serif;
+    backdrop-filter: blur(80px)
+
+}
+
+.recipe-img {
+    width: 18rem;
+    height: 12rem;
+}
+
+.btn-primary {
+    background-color: #d2f4ea;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: #ced4da;
+    border-image: initial;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #198754;
+    border-color: #ced4da;
+}
+
+.big-photo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}

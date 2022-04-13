@@ -33,7 +33,7 @@ def all_recipes():
         recipes = crud.get_recipes()
     else:
         recipes = crud.get_public_recipes()
-    message = "Check out these recipes!"
+    message = "Check out our recipes!"
     return render_template("recipes.html", recipes=recipes, message=message)
 
 @app.route("/user_recipes")
@@ -192,7 +192,7 @@ def add_ingredient():
 def search():
     search_word = request.args.get('cuisine').lower()
     results = crud.general_search(search_word)
-    message = f"Recipes results for {request.args.get('cuisine')}:"
+    message = f"Search results for {request.args.get('cuisine')}:"
     return render_template("recipes.html", recipes=results, message=message)
 
 @app.route('/ingredient_search')

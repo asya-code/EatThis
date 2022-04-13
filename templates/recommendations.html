@@ -9,21 +9,26 @@
 
         so you may like:
 </h3>
-{% for recipe in recommendations %} 
-<div class="card text-white bg-info mb-3">
-    <div style="height:300px; overflow:hidden;">
-      {% if recipe.images %}
-      <img class="card-img-top" src="{{ recipe.images[0].url }}" 
-      alt="{{ recipe.title }}" style="vertical-align:middle; 
-        ">
-          {% endif %}
-  </div>
 
-    <div class="card-body">
-      <h5 class="card-title">{{ recipe.title }}</h5>
-      <a href="/recipes/{{ recipe.recipe_id }}" class="btn btn-primary">View Recipe</a>
+<div class="row">
+
+  {% for recipe in recommendations %}
+  <div class="col-sm-4">
+    <div class="card" style="width: 18rem; height: 18rem; margin-top: 30px;">
+      {% if recipe.images %}
+        <img class="card-img-top recipe-img" src="{{ recipe.images[0].url }}" alt="Card image cap"> 
+      
+      {% else %}
+        <img class="card-img-top recipe-img" src="/static/images/placeholder.png" alt="Card image cap">
+      
+      {% endif %}
+  
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <a href="/recipes/{{ recipe.recipe_id }}" class="btn btn-primary">View Recipe</a>
+      </div>
     </div>
   </div>
-{% endfor%}
-
-{% endblock %}
+  {% endfor %}
+  </div>
+  {% endblock %}

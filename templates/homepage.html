@@ -5,12 +5,17 @@
 
 <h1>Trending Today: </h1>
 
+<div class="row">
+
 {% for recipe in recipes %}
-  <div class="card text-white bg-info mb-3">
+<div class="col-sm-4">
+  <div class="card" style="width: 18rem; height: 18rem; margin-top: 30px;">
     {% if recipe.images %}
-    <div style="height:300px; overflow:hidden;">
-      <img class="card-img-top" src="{{ recipe.images[0].url }}" alt="{{ recipe.title }}" style="vertical-align:middle; transform:translateY(-50%);"> 
-    </div>
+      <img class="card-img-top recipe-img" src="{{ recipe.images[0].url }}" alt="Card image cap"> 
+    
+    {% else %}
+      <img class="card-img-top recipe-img" src="/static/images/placeholder.png" alt="Card image cap">
+    
     {% endif %}
 
     <div class="card-body">
@@ -18,8 +23,7 @@
       <a href="/recipes/{{ recipe.recipe_id }}" class="btn btn-primary">View Recipe</a>
     </div>
   </div>
-
-
+</div>
 {% endfor %}
-
+</div>
 {% endblock %}
