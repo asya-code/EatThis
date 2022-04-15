@@ -2,6 +2,24 @@
 {% block title %} {{recipe.title}} {% endblock %}
 
 {% block content%}
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav class="sticky-left" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Ingredients</h3>
+        </div>
+
+        {% for ingredient in recipe.ingredients %}
+            <div>
+                {{ingredient.qty}} {{ingredient.unit}} - {{ingredient.ing_name}}
+            </div>
+        {% endfor %}
+
+    </nav>
+
+<!-- Page content -->
+<div id="content">
 <span class="big-photo" style="display:inline-block;">
     {% for image in recipe.images %}
        
@@ -12,7 +30,7 @@
     </span>
 
     <div class="card-body">
-      <h5 class="card-title">{{ recipe.title }}</h5>
+      <h2 class="card-title">{{ recipe.title }}</h2>
     </div>
     <p>
     </p>
@@ -39,7 +57,7 @@
     <p id="rating">
         <span id="new_rating">{{rating}}</span> liked this recipe!
     </p>
-    <div>
+    <!-- <div>
         Ingredients:
         <p>
         </p>
@@ -48,7 +66,7 @@
                 {{ingredient.ing_name}} - {{ingredient.qty}} {{ingredient.unit}}
             </div>
         {% endfor %}
-        </div>
+        </div> -->
     <div>
         Instructions:
         <p>
@@ -66,6 +84,9 @@
 
     </div>
   </div>
+</div>
+</div>
+
   <input type="hidden" id='hidden_recipe_id' name='recipe_id' value={{recipe.recipe_id}}>
   <input type="hidden" id='hidden_recipe_title' name='title' value={{recipe.title}}>
   <script src='/static/js/recipe.js'></script>

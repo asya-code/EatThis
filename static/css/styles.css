@@ -38,3 +38,32 @@ body {
     flex-direction: column;
     word-wrap: break-word;
 }
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#sidebar {
+    position: sticky;
+    left: 10px;
+    width: 25%;
+    height: 25vh;
+
+    /* top: 0;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s; */
+}
+
+#content {
+    width: 60%;
+    height: 25%;
+}
