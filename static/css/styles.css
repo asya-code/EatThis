@@ -17,13 +17,14 @@ body {
 }
 
 .btn-primary {
-    background-color: #d2f4ea;
+    background-color: #fff;
     margin: 0em;
     padding: 1px 6px;
-    border-width: 2px;
+    /* border-width: 2px;
     border-style: outset;
-    border-color: #ced4da;
-    border-image: initial;
+    border-image: initial; */
+    border-color: #198754;
+    color: #198754;
 }
 
 .btn-primary:hover {

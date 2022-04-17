@@ -4,7 +4,11 @@
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+      
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -37,7 +41,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
       
-    <a class="navbar-brand" href="#"> <img src="/static/images/logo-transparent.jpg" alt="Eat This!" width=150px></a>
+    <a class="navbar-brand" href="#"> <div style="font-family: 'Shadows Into Light', cursive; font-size: x-large;">Eat This!</div></a>
     <!-- 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -65,7 +69,7 @@
         
         <form class="d-flex" action="/ingredient_search">
           <input class="form-control me-2" id="ingredientSearchField" name="ingredient" type="search" placeholder="Search by ingredient" aria-label="ingredientSearch">
-          <button class="btn btn-outline-success" id="ingredientSearchBttn" type="submit"> Search by ingredient </button>
+          <button class="btn btn-outline-success text-nowrap " id="ingredientSearchBttn" type="submit">Search by ingredient</button>
         </form>
       
         {% if session['current_user'] %}
