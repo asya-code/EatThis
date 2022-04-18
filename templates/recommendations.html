@@ -14,7 +14,7 @@
 
   {% for recipe in recommendations %}
   <div class="col-sm-4">
-    <div class="card" style="width: 18rem; height: 18rem; margin-top: 30px;">
+    <div class="card rounded" style="width: 18rem; height: 18rem; margin-top: 30px;">
       {% if recipe.images %}
         <img class="card-img-top recipe-img" src="{{ recipe.images[0].url }}" alt="Card image cap"> 
       

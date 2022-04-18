@@ -3,23 +3,7 @@
 
 {% block content%}
 
-<div class="wrapper">
-    <!-- Sidebar -->
-    <nav class="sticky-left" id="sidebar">
-        <div class="sidebar-header">
-            <h3>Ingredients</h3>
-        </div>
-
-        {% for ingredient in recipe.ingredients %}
-            <div>
-                {{ingredient.qty}} {{ingredient.unit}} - {{ingredient.ing_name}}
-            </div>
-        {% endfor %}
-
-    </nav>
-
 <!-- Page content -->
-<div id="content">
 <span class="big-photo" style="display:inline-block;">
     {% for image in recipe.images %}
        
@@ -67,8 +51,19 @@
             </div>
         {% endfor %}
         </div> -->
-    <div>
-        Instructions:
+<div class="row">
+    <div class="column left">    
+        <h3>Ingredients</h3>
+
+        {% for ingredient in recipe.ingredients %}
+            <div>
+                {{ingredient.qty}} {{ingredient.unit}} - {{ingredient.ing_name}}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="column right">
+        <h3>Instructions:</h3>
         <p>
         </p>
         {% for step in recipe.steps%}
@@ -83,8 +78,6 @@
         {% endfor %}
 
     </div>
-  </div>
-</div>
 </div>
 
   <input type="hidden" id='hidden_recipe_id' name='recipe_id' value={{recipe.recipe_id}}>
