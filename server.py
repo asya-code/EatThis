@@ -1,6 +1,7 @@
 from crypt import methods
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db, db, User, Recipe, Step, Favorite, Ingredient, Image
+import random
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -34,6 +35,7 @@ def all_recipes():
     else:
         recipes = crud.get_public_recipes()
     message = "Check out our recipes!"
+    random.shuffle(recipes)
     return render_template("recipes.html", recipes=recipes, message=message)
 
 @app.route("/user_recipes")

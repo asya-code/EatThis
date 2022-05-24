@@ -8,7 +8,7 @@
     {% for image in recipe.images %}
        
         <img src="{{image.url}}" 
-        alt="{{ recipe.title }}" style="height:300px; width:300; margin-right: 5px; margin-left: 5px; margin-top: 10px; margin-bottom: 10px;">
+        alt="{{ recipe.title }}" style="height: 250px; width:2500; margin-right: 5px; margin-left: 5px; margin-top: 10px; margin-bottom: 10px;">
 
         {% endfor %}
     </span>
@@ -27,7 +27,7 @@
         
         {% if recipe.recipe_id in favorites %}
             "{{recipe.title}}" is in yous Favorites! Do you want to edit it?
-            <a id="edit_recipe" href="/edit_{{recipe.recipe_id}}"> Let's edit </a>
+            <a class="btn btn-primary" id="edit_recipe" href="/edit_{{recipe.recipe_id}}"> Let's edit </a>
 
         {% else %}
             <div>
@@ -72,10 +72,17 @@
                 {{ step.step_image }}
             </div>
             {% endif %}
-            <div>
+            <p class="indent">
                 {{ step.instruction }}
-            </div>
+            </p>
+            <p></p>
         {% endfor %}
+        <p></p>
+        <p></p>
+        <br>
+        <p></p>
+        <br>
+        <p></p>
 
     </div>
 </div>

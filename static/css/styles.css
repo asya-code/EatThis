@@ -1,5 +1,5 @@
 body {
-    background: url("/static/images/background5.jpg") no-repeat center center; 
+    background: url("/static/images/background12.jpg") no-repeat; 
     background-size: cover;
     font-family: 'Source Sans Pro', sans-serif;
     backdrop-filter: blur(5px)  
@@ -89,4 +89,8 @@ body {
   content: "";
   display: table;
   clear: both;
+}
+
+p.indent {
+    text-indent: 30px;
 }
