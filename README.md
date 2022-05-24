@@ -1,12 +1,11 @@
 <h1 align="center">
   <a href="https://github.com/asya-code/EatThis.git">
     <!-- Please provide path to your logo here -->
-    <img src="static/images/logo.png" alt="Logo" width="300" height="100">
+    <div style="font-family: 'Shadows Into Light', cursive; font-size: x-large;">Eat This!</div>
   </a>
 </h1>
 
 <div align="center">
-  Eat This!
   <br />
   <a href="#about"><strong>Eat This!</strong></a>
   <br />
