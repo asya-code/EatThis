@@ -1,29 +1,14 @@
 <h1 align="center">
   <a href="https://github.com/asya-code/EatThis.git">
     <!-- Please provide path to your logo here -->
-    <div style="font-family: 'Shadows Into Light', cursive; font-size: x-large;">Eat This!</div>
+    <div style="font-family: 'Shadows Into Light', cursive; font-size: x-large; color: Black">Eat This!</div>
   </a>
 </h1>
 
 <div align="center">
-  <br />
-  <a href="#about"><strong>Eat This!</strong></a>
-  <br />
-  <br />
-  
-  ·
-  <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
-  .
-  <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
-</div>
-
-<div align="center">
 <br />
 
-[![Project license](https://img.shields.io/github/license/GITHUB_USERNAME/REPO_SLUG.svg?style=flat-square)](LICENSE)
-
-[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-[![code with love by GITHUB_USERNAME](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-GITHUB_USERNAME-ff1414.svg?style=flat-square)](https://github.com/GITHUB_USERNAME)
+[![code with love by GITHUB_USERNAME](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-GITHUB_USERNAME-ff1414.svg?style=flat-square)](https://github.com/asya_code)
 
 </div>
 
@@ -46,7 +31,6 @@
 
 ## About
 
-> **[?]**
 EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
 
 
@@ -54,12 +38,11 @@ EatThis - a smart recipe application which allows you to create, edit, favorite,
 <summary>Screenshots</summary>
 <br>
 
-> **[?]**
-> Please provide your screenshots here.
 
-|                               Home Page                               |                               Login Page                               |
+
+|                               Trending recipes                               |                               Recommendations Page                               |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
+| <img src="static/images/trending_today.png" title="Trending recipes" width="100%"> | <img src="static/images/recommendations.png" title="Recommendations" width="100%"> |
 
 </details>
 
