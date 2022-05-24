@@ -1,17 +1,17 @@
 <h1 align="center">
   <a href="https://github.com/asya-code/EatThis.git">
     <!-- Please provide path to your logo here -->
-    <img src="static/images/logo.GPG" alt="Logo" width="100" height="100">
+    <img src="static/images/logo.png" alt="Logo" width="300" height="100">
   </a>
 </h1>
 
 <div align="center">
-  PROJECT_NAME
+  Eat This!
   <br />
-  <a href="#about"><strong>Explore the screenshots »</strong></a>
+  <a href="#about"><strong>Eat This!</strong></a>
   <br />
   <br />
-  <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  
   ·
   <a href="https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
   .
@@ -39,12 +39,7 @@
 - [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Support](#support)
-- [Project assistance](#project-assistance)
-- [Contributing](#contributing)
-- [Authors & contributors](#authors--contributors)
-- [Security](#security)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+
 
 </details>
 
@@ -53,11 +48,8 @@
 ## About
 
 > **[?]**
-> Provide general information about your project here.
-> What problem does it (intend to) solve?
-> What is the purpose of your project?
-> Why did you undertake it?
-> You don't have to answer all the questions -- just the ones relevant to your project.
+EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
+
 
 <details>
 <summary>Screenshots</summary>
@@ -75,7 +67,7 @@
 ### Built With
 
 > **[?]**
-> Please provide the technologies that are used in the project.
+The backend is powered by Python with Flask web framework and SQLAlchemy as its ORM, PostgreSQL for database. The front-end is written in HTML, Jinja and Javascript. Bootstrap and css were used to style the app.
 
 ## Getting Started
 
@@ -97,60 +89,30 @@
 
 ## Roadmap
 
-See the [open issues](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues) for a list of proposed features (and known issues).
+Project starts on 03.14.2022, ends on Steps:
 
-- [Top Feature Requests](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+MVP
+- Users can create a profile and log in
+- Users can Store their own recipes - ingredients and steps, pictures (cloudinary API)
+- Users can save favorite recipes
 
-## Support
+2.0
+- Users can look for a new recipes by:
+    Name
+    Cousine
+    Ingredients
+- Recommendations available based on:
+    Most used recipes
+    Favorite cousine
+    Trending
 
-> **[?]**
-> Provide additional ways to contact the project maintainer/maintainers.
+3.0
+- Long term meal planning
+- Meal Planning recommendations and suggestions
+- Recipes recalculations according to a family/group size
 
-Reach out to the maintainer at one of the following places:
+Nice-to-haves
+- Dietary adjustment to whole MPV
+- Calories/nutritions calculator based recommendations
 
-- [GitHub issues](https://github.com/GITHUB_USERNAME/REPO_SLUG/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
-- Contact options listed on [this GitHub profile](https://github.com/GITHUB_USERNAME)
-
-## Project assistance
-
-If you want to say **thank you** or/and support active development of PROJECT_NAME:
-
-- Add a [GitHub Star](https://github.com/GITHUB_USERNAME/REPO_SLUG) to the project.
-- Tweet about the PROJECT_NAME.
-- Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or your personal blog.
-
-Together, we can make PROJECT_NAME **better**!
-
-## Contributing
-
-First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
-
-
-Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you for being involved!
-
-## Authors & contributors
-
-The original setup of this repository is by [FULL_NAME](https://github.com/GITHUB_USERNAME).
-
-For a full list of all authors and contributors, see [the contributors page](https://github.com/GITHUB_USERNAME/REPO_SLUG/contributors).
-
-## Security
-
-PROJECT_NAME follows good practices of security, but 100% security cannot be assured.
-PROJECT_NAME is provided **"as is"** without any **warranty**. Use at your own risk.
-
-_For more information and to report security issues, please refer to our [security documentation](docs/SECURITY.md)._
-
-## License
-
-This project is licensed under the **MIT license**.
-
-See [LICENSE](LICENSE) for more information.
-
-## Acknowledgements
-
-> **[?]**
-> If your work was funded by any organization or institution, acknowledge their support here.
-> In addition, if your work relies on other software libraries, or was inspired by looking at other work, it is appropriate to acknowledge this intellectual debt too.
+Main data will come from the static database, working on how to implement dynamic update of the database from online sources
