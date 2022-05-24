@@ -42,7 +42,8 @@ EatThis - a smart recipe application which allows you to create, edit, favorite,
 
 |                               Trending recipes                               |                               Recommendations Page                               |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| ![](static/images/trending_today.png.png) | <img src="static/images/recommendations.png" title="Recommendations" width="100%"> |
+![](static/images/trending_today.png)
+ <img src="static/images/recommendations.png" title="Recommendations" width="100%"> |
 
 </details>
 
