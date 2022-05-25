@@ -31,15 +31,15 @@
 ---
 
 ## About
-
+<p>
 EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
-
+</p>
 
 <details>
-<summary>Screenshots</summary>
 <br>
 
 <img src="static/images/trending_today.png" title="Trending recipes" width="100%"> 
+<br>
 <img src="static/images/recommendations.png" title="Recommendations" width="100%">
 
 </details>
@@ -49,8 +49,9 @@ EatThis - a smart recipe application which allows you to create, edit, favorite,
 Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM, PostgreSQL for database. The front-end is written in HTML, Jinja and Javascript. Bootstrap and css were used to style the app.
 
 ## Features
-
+<p>
 Unregistered guests can see the most popular recipes, browse all recipes and search particular ones by cuisine/diet/recipe name or ingredient.  After search button is pressed, request is send into my flask server which picks corresponding recipes from the database and sends them to the search results page.
+<p>
 <br>
 
 <img src="static/images/search.png" title="Search results" width="100%">
