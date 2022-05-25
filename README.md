@@ -32,17 +32,18 @@
 
 ## About
 <p>
-EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
+&nbsp EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
 </p>
 
-<details>
 <br>
+<br>
+<br>
+
 
 <img src="static/images/trending_today.png" title="Trending recipes" width="100%"> 
 <br>
 <img src="static/images/recommendations.png" title="Recommendations" width="100%">
 
-</details>
 
 ### Built With
 
