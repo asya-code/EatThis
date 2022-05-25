@@ -8,7 +8,7 @@
 <div align="center">
 <br />
 
-[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by_asya_code-ff1414.svg?style=flat-square)](https://github.com/asya-code)
+[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-asya_code-ff1414.svg?style=flat-square)](https://github.com/asya-code)
 
 </div>
 
