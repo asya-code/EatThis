@@ -8,7 +8,7 @@
 <div align="center">
 <br />
 
-[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20byasya_code-ff1414.svg?style=flat-square)](https://github.com/asya_code)
+[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by_asya-code-ff1414.svg?style=flat-square)](https://github.com/asya_code)
 
 </div>
 
@@ -40,7 +40,6 @@
 <img src="static/images/trending_today.png" title="Trending recipes" width="100%"> 
 <br>
 <br>
-<br>
 
 <img src="static/images/recommendations.png" title="Recommendations" width="100%">
 
@@ -59,24 +58,32 @@ Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM,
 
 <br>
 
+<p>
 &nbsp Logged in users can add their own recipes with my “add new recipe” feature, that support multiple ingredients and instructions input and images attachment. Images are stored via Cloudinary API.  These recipes are private by default user can choose to publish it to the website too. On the backend Flasks creates a recipe and stores it in the database. 
+</p>
 <br>
 
 <img src="static/images/add_new_recipe_typing.png" title="Add new recipe typing" width="100%">
 
 <br>
+<p>
 &nbsp When recipe was successfully submitted, user will be redirected to this recipe page immediately.
+</p>
 <br>
 <img src="static/images/add_new_recipe_result.png" title="New recipe completed" width="100%">
 <br>
+<p>
 &nbsp Users also can add recipes to their favorites, I’ve used Javascript to implement this without reloading the page. Every favorite recipe can be modified according to user’s preferences, the amount of recipe variations is unlimited.
+</p>
 <br>
 <img src="static/images/favorite_edit_button.png" title="Favorite recipe editing option" width="100%">
 
 <br>
+<p>
 &nbsp Another feature of my app is recipe recommendations based on user’s preferences.
+</p>
 <br>
-<img src="static/images/Recommendations.png" title="Recommendations" width="100%">
+<img src="static/images/recommendations.png" title="Recommendations" width="100%">
 
 
 ## Getting Started
@@ -85,7 +92,7 @@ Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM,
 
 Retrieve an entire repository from a hosted location via URL
 <br>
-<b> git clone https://github.com/asya-code/EatThis.git </b>
+<p> &nbsp <b> git clone https://github.com/asya-code/EatThis.git </b> </p>
 <br>
 
 
