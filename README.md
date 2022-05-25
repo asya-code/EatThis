@@ -95,6 +95,20 @@ Retrieve an entire repository from a hosted location via URL
 <p> &nbsp <b> git clone https://github.com/asya-code/EatThis.git </b> </p>
 <br>
 
+You’d then create a virtual environment:
+
+<p> &nbsp <b> virtualenv env </b> </p>
+Next, you’d activate that environment:
+
+<p> &nbsp <b> source env/bin/activate </b> </p>
+Finally, you’d use pip3 to install all of the requirements:
+
+<p> &nbsp <b> (env) $ pip3 install -r requirements.txt </b> </p>
+The -r option lets you supply a text file in the format pip3 freeze produces. This command should install all of the listed libraries.
+
+To confirm that the correct packages are installed, you’d just run:
+
+<p> &nbsp <b> (env) $ pip3 freeze </b> </p>
 
 
 ## Usage
