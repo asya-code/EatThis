@@ -8,7 +8,7 @@
 <div align="center">
 <br />
 
-[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by_asya\-code-ff1414.svg?style=flat-square)](https://github.com/asya_code)
+[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by_asya/-code-ff1414.svg?style=flat-square)](https://github.com/asya_code)
 
 </div>
 
@@ -22,9 +22,7 @@
   - [Installation](#installation)
   - [Launch your server](#launch-your-server)
 
-- [Usage](#usage)
 - [Roadmap](#roadmap)
-- [Support](#support)
 
 
 </details>
@@ -122,11 +120,6 @@ Once you’ve set up your virtual environment, activated it, and installed Flask
 <br>
 <p> &nbsp <b> python3 server.py </b> </p>
 
-## Usage
-
-> **[?]**
-> How does one go about using it?
-> Provide various use cases and code examples here.
 
 ## Roadmap
 
