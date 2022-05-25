@@ -8,7 +8,7 @@
 <div align="center">
 <br />
 
-[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by_asya-code-ff1414.svg?style=flat-square)](https://github.com/asya_code)
+[![code with love by asya_code](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by_asya\-code-ff1414.svg?style=flat-square)](https://github.com/asya_code)
 
 </div>
 
@@ -20,6 +20,8 @@
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
+  - [Launch your server](#launch-your-server)
+
 - [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Support](#support)
@@ -114,7 +116,8 @@ To confirm that the correct packages are installed, you’d just run:
 
 <p> &nbsp <b> pip3 freeze </b> </p>
 
-<b> Launch Your Server </b>
+### Launch your server
+
 Once you’ve set up your virtual environment, activated it, and installed Flask, you should just be able to type:
 <br>
 <p> &nbsp <b> python3 server.py </b> </p>
