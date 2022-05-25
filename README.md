@@ -112,8 +112,12 @@ The -r option lets you supply a text file in the format pip3 freeze produces. Th
 To confirm that the correct packages are installed, you’d just run:
 <br>
 
-<p> &nbsp <b> (env) $ pip3 freeze </b> </p>
+<p> &nbsp <b> pip3 freeze </b> </p>
 
+<b> Launch Your Server </b>
+Once you’ve set up your virtual environment, activated it, and installed Flask, you should just be able to type:
+<br>
+<p> &nbsp <b> python3 server.py </b> </p>
 
 ## Usage
 
