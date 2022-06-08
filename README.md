@@ -39,20 +39,22 @@ EatThis - a smart recipe application which allows you to create, edit, favorite,
 
 <img src="static/images/trending_today.png" title="Trending recipes" width="100%"> 
 <br>
-<br>
+
 
 ### Built With
 
 Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM, PostgreSQL for database. The front-end is written in HTML, Jinja and Javascript. Bootstrap and css were used to style the app.
-<img src="static/images/diagram.png" title="diagram" width="100%"> 
+<br>
+
+<img src="static/images/code.png" title="code snippet" width="100%"> 
+<br>
 
 
 ## Features
 <p>
 Unregistered guests can see the most popular recipes, browse all recipes and search particular ones by cuisine/diet/recipe name or ingredient.  After search button is pressed, request is send into my flask server which picks corresponding recipes from the database and sends them to the search results page.
 <p>
-
-<br>
+<img src="static/images/trending_today.png" title="Trending recipes" width="100%"> 
 
 <p>
 Logged in users can add their own recipes with my “add new recipe” feature, that support multiple ingredients and instructions input and images attachment. Images are stored via Cloudinary API.  These recipes are private by default user can choose to publish it to the website too. On the backend Flasks creates a recipe and stores it in the database. 
@@ -63,16 +65,9 @@ Logged in users can add their own recipes with my “add new recipe” feature, 
 
 <br>
 <p>
-When recipe was successfully submitted, user will be redirected to this recipe page immediately.
+When recipe was successfully submitted, user will be redirected to this recipe page immediately. Users also can add recipes to their favorites, I’ve used Javascript to implement this without reloading the page. Every favorite recipe can be modified according to user’s preferences, the amount of recipe variations is unlimited.
 </p>
-<br>
-<p>
-Users also can add recipes to their favorites, I’ve used Javascript to implement this without reloading the page. Every favorite recipe can be modified according to user’s preferences, the amount of recipe variations is unlimited.
-</p>
-<br>
-<img src="static/images/favorite_edit_button.png" title="Favorite recipe editing option" width="100%">
 
-<br>
 <p>
 Another feature of my app is recipe recommendations based on user’s preferences.
 </p>
