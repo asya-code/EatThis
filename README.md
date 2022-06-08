@@ -31,7 +31,7 @@
 
 ## About
 <p>
-&nbsp EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
+EatThis - a smart recipe application which allows you to create, edit, favorite, and search for new recipes. This app has recommendation algorithms which consider the user's food preferences.
 </p>
 
 <br>
@@ -49,16 +49,13 @@ Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM,
 
 ## Features
 <p>
-&nbsp Unregistered guests can see the most popular recipes, browse all recipes and search particular ones by cuisine/diet/recipe name or ingredient.  After search button is pressed, request is send into my flask server which picks corresponding recipes from the database and sends them to the search results page.
+Unregistered guests can see the most popular recipes, browse all recipes and search particular ones by cuisine/diet/recipe name or ingredient.  After search button is pressed, request is send into my flask server which picks corresponding recipes from the database and sends them to the search results page.
 <p>
-<br>
-
-<img src="static/images/search.png" title="Search results" width="100%">
 
 <br>
 
 <p>
-&nbsp Logged in users can add their own recipes with my “add new recipe” feature, that support multiple ingredients and instructions input and images attachment. Images are stored via Cloudinary API.  These recipes are private by default user can choose to publish it to the website too. On the backend Flasks creates a recipe and stores it in the database. 
+Logged in users can add their own recipes with my “add new recipe” feature, that support multiple ingredients and instructions input and images attachment. Images are stored via Cloudinary API.  These recipes are private by default user can choose to publish it to the website too. On the backend Flasks creates a recipe and stores it in the database. 
 </p>
 <br>
 
@@ -66,20 +63,18 @@ Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM,
 
 <br>
 <p>
-&nbsp When recipe was successfully submitted, user will be redirected to this recipe page immediately.
+When recipe was successfully submitted, user will be redirected to this recipe page immediately.
 </p>
 <br>
-<img src="static/images/add_new_recipe_result.png" title="New recipe completed" width="100%">
-<br>
 <p>
-&nbsp Users also can add recipes to their favorites, I’ve used Javascript to implement this without reloading the page. Every favorite recipe can be modified according to user’s preferences, the amount of recipe variations is unlimited.
+Users also can add recipes to their favorites, I’ve used Javascript to implement this without reloading the page. Every favorite recipe can be modified according to user’s preferences, the amount of recipe variations is unlimited.
 </p>
 <br>
 <img src="static/images/favorite_edit_button.png" title="Favorite recipe editing option" width="100%">
 
 <br>
 <p>
-&nbsp Another feature of my app is recipe recommendations based on user’s preferences.
+Another feature of my app is recipe recommendations based on user’s preferences.
 </p>
 <br>
 <img src="static/images/recommendations.png" title="Recommendations" width="100%">
