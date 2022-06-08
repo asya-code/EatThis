@@ -41,12 +41,11 @@
 <br>
 <br>
 
-<img src="static/images/recommendations.png" title="Recommendations" width="100%">
-
-
 ### Built With
 
 Backend is powered by Python with Flask web framework and SQLAlchemy as its ORM, PostgreSQL for database. The front-end is written in HTML, Jinja and Javascript. Bootstrap and css were used to style the app.
+<img src="static/images/diagram.png" title="diagram" width="100%"> 
+
 
 ## Features
 <p>
